@@ -33,8 +33,8 @@ class Paging extends Component {
     this.set({
       ...this.props,
       ...page,
-      backDisabled: page.current === 1,
-      forwardDisabled: page.current === page.last,
+      backDisabled: page.previous === null,
+      forwardDisabled: page.next === null,
       highOverflow: page.range[page.range.length - 1] !== page.last,
       lowOverflow: page.range[0] !== 1,
     })
