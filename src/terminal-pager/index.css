@@ -1,0 +1,29 @@
+gb-terminal-pager.gb-stylish {
+  display: flex;
+  width: 100%;
+}
+
+gb-terminal-pager.gb-stylish .gb-terminal-pager {
+  display: flex;
+  text-decoration: none;
+  color: #888;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+
+gb-terminal-pager.gb-stylish .gb-terminal-pager:hover {
+  color: black;
+}
+
+gb-terminal-pager.gb-stylish .gb-terminal-pager.gb-disabled {
+  color: #ddd;
+  cursor: not-allowed;
+}
+
+gb-terminal-pager.gb-stylish gb-pager {
+  flex: 1;
+}
+
+gb-terminal-pager.gb-stylish gb-icon img {
+  width: 20px;
+}

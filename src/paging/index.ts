@@ -5,17 +5,19 @@ import { view, Component, Events, Store } from '@storefront/core';
   { name: 'showLabels', default: true },
   { name: 'numericLabels', type: 'boolean' },
   { name: 'labels', default: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' } },
+  { name: 'limit', default: 5 },
   {
     name: 'icons', default: {
       // first: require('./double-arrow-left.png'),
       // next: require('./arrow-right.png'),
       // prev: require('./arrow-left.png'),
       // last: require('./double-arrow-right.png')
-    }
+    },
   }
 ])
 class Paging extends Component {
 
+  props: Paging.Props;
   state: Partial<Paging.State> = {
     firstPage: () => this.flux.switchPage(this.state.first),
     lastPage: () => this.flux.switchPage(this.state.last),
@@ -29,15 +31,25 @@ class Paging extends Component {
     this.flux.on(Events.PAGE_UPDATED, this.updatePage);
   }
 
-  updatePage = (page: Store.Page) =>
-    this.set({
+  updatePage = (page: Store.Page) => {
+      this.set({
       ...this.props,
       ...page,
       backDisabled: page.previous === null,
       forwardDisabled: page.next === null,
       highOverflow: page.range[page.range.length - 1] !== page.last,
       lowOverflow: page.range[0] !== 1,
+      range: this.updateRange(page.current),
     })
+  }
+
+  updateRange(current: number) {
+    console.log('-------- updatin range ---------');
+    console.log(this.props.limit);
+    console.log(this);
+    const limit = this.props.limit;
+    return [1,2, 3, 4, 5];
+  }
 }
 
 namespace Paging {
@@ -51,6 +63,7 @@ namespace Paging {
       prev?: string;
       next?: string;
     };
+    limit: number;
     icons?: {
       first?: string;
       last?: string;
@@ -64,6 +77,7 @@ namespace Paging {
     lowOverflow?: boolean;
     backDisabled?: boolean;
     forwardDisabled?: boolean;
+    range: number[];
 
     firstPage(): void;
     lastPage(): void;

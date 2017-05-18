@@ -1,9 +1,9 @@
-<gb-link class="{ gb-disabled: $paging.backDisabled }" on-click="{ $paging.firstPage }">
+<gb-link class="gb-terminal-pager { gb-disabled: $paging.backDisabled }" on-click="{ $paging.firstPage }">
   <!-- <gb-icon if="{ $paging.icons }" img="{ $paging.firstIcon }"></gb-icon> -->
   <span if="{ $paging.showLabels }">{ $paging.numericLabels ? $paging.first : $paging.labels.first }</span>
 </gb-link>
 <yield/>
-<gb-link class="{ gb-disabled: $paging.forwardDisabled }" on-click="{ $paging.lastPage }">
+<gb-link class="gb-terminal-pager { gb-disabled: $paging.forwardDisabled }" on-click="{ $paging.lastPage }">
   <span if="{ $paging.showLabels }">{ $paging.numericLabels ? $paging.last : $paging.labels.last }</span>
   <!-- <gb-icon if="{ $paging.icons }" img="{ $paging.lastIcon }"></gb-icon> -->
 </gb-link>

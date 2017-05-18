@@ -1,0 +1,32 @@
+gb-pages.gb-stylish .gb-pages__page {
+  cursor: pointer;
+}
+
+gb-pages.gb-stylish > .gb-pages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+gb-pages.gb-stylish > .gb-pages > li {
+  display: inline;
+}
+
+gb-pages.gb-stylish .gb-pages__page,
+gb-pages.gb-stylish .gb-pages__ellipsis {
+  text-decoration: none;
+  color: #888;
+}
+
+gb-pages.gb-stylish .gb-pages__page {
+  padding: 0 4px;
+}
+
+gb-pages.gb-stylish .gb-pages__page:hover,
+gb-pages.gb-stylish .gb-pages__page.gb-selected {
+  color: black;
+}

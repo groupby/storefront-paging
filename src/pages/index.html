@@ -1,7 +1,7 @@
-<ul if="{ $paging.pages }">
-  <span if="{ $paging.lowOverflow }">&hellip;</span>
+<ul class="gb-pages">
+  <span class="gb-pages__ellipsis" if="{ $paging.lowOverflow }">&hellip;</span>
   <li each="{ page in $paging.range }">
-    <gb-link class="{ gb-selected: $paging.current === page }" on-click="{ $paging.switchPage }">{ page }</gb-link>
+    <gb-link class="gb-pages__page { gb-selected: $paging.current === page }" on-click="{ $paging.switchPage }">{ page }</gb-link>
   </li>
-  <span if="{ $paging.highOverflow }">&hellip;</span>
+  <span class="gb-pages__ellipsis" if="{ $paging.highOverflow }">&hellip;</span>
 </ul>
