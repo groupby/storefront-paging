@@ -39,16 +39,29 @@ class Paging extends Component {
       forwardDisabled: page.next === null,
       highOverflow: page.range[page.range.length - 1] !== page.last,
       lowOverflow: page.range[0] !== 1,
-      range: this.updateRange(page.current),
-    })
+      range: this.updateRange(page.last, page.current),
+    });
   }
 
-  updateRange(current: number) {
-    console.log('-------- updatin range ---------');
-    console.log(this.props.limit);
-    console.log(this);
+  updateRange(lastPage: number, current: number) {
     const limit = this.props.limit;
-    return [1,2,3,4,5];
+    const last = Math.min(lastPage, limit);
+    const border = Math.floor(limit / 2);
+    if (current <= border) {
+      return this.range(1, last);
+    } else if (current >= lastPage - border) {
+      return this.range(lastPage - last + 1, lastPage);
+    } else {
+      return this.range(current - border, current + border);
+    }
+  }
+
+  range(low: number, high: number) {
+    let arr = [];
+    for (let i = low; i < high + 1; i++) {
+      arr.push(i);
+    }
+    return arr;
   }
 }
 
