@@ -48,7 +48,7 @@ class Paging extends Component {
     console.log(this.props.limit);
     console.log(this);
     const limit = this.props.limit;
-    return [1,2, 3, 4, 5];
+    return [1,2,3,4,5];
   }
 }
 

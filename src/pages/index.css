@@ -1,3 +1,8 @@
+.gb-pages.gb-low-overflow::before,
+.gb-pages.gb-high-overflow::after {
+  content: "…";
+}
+
 gb-pages.gb-stylish .gb-pages__page {
   cursor: pointer;
 }
