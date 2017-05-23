@@ -1,6 +1,6 @@
 import { view, Component, Events, Store } from '@storefront/core';
 
-@view('gb-paging', require('./index.html'), require('./index.css'), [
+@view('gb-paging', require('./index.html'), [
   { name: 'showIcons', default: true },
   { name: 'showLabels', default: true },
   { name: 'numericLabels', type: 'boolean' },
@@ -32,7 +32,7 @@ class Paging extends Component {
   }
 
   updatePage = (page: Store.Page) => {
-      this.set({
+    this.set({
       ...this.props,
       ...page,
       backDisabled: page.previous === null,
