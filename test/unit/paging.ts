@@ -130,7 +130,7 @@ suite('Paging', ({ expect, spy }) => {
       const current = 1;
       paging.props = <any>{ limit };
 
-      const updateRange = paging.updateRange(last, current);
+      const updateRange = paging.generateRange(last, current);
 
       expect(updateRange).to.eql([1,2,3]);
     });
@@ -141,7 +141,7 @@ suite('Paging', ({ expect, spy }) => {
       const current = 8;
       paging.props = <any>{ limit };
 
-      const updateRange = paging.updateRange(last, current);
+      const updateRange = paging.generateRange(last, current);
 
       expect(updateRange).to.eql([6, 7, 8, 9, 10]);
     });
@@ -152,7 +152,7 @@ suite('Paging', ({ expect, spy }) => {
       const current = 6;
       paging.props = <any>{ limit };
 
-      const updateRange = paging.updateRange(last, current);
+      const updateRange = paging.generateRange(last, current);
 
       expect(updateRange).to.eql([4, 5, 6, 7, 8]);
     });
@@ -164,7 +164,7 @@ suite('Paging', ({ expect, spy }) => {
       const range = paging.range = spy();
       paging.props = <any>{ limit };
 
-      paging.updateRange(last, current);
+      paging.generateRange(last, current);
 
       expect(range.calledWith(1, limit)).to.be.true;
     });
@@ -175,7 +175,7 @@ suite('Paging', ({ expect, spy }) => {
       const range = paging.range = spy();
       paging.props = <any>{ limit: 5 };
 
-      paging.updateRange(last, current);
+      paging.generateRange(last, current);
 
       expect(range.calledWith(6, 10)).to.be.true;
     });
@@ -187,7 +187,7 @@ suite('Paging', ({ expect, spy }) => {
       const range = paging.range = spy();
       paging.props = <any>{ limit };
 
-      const updateRange = paging.updateRange(last, current);
+      const updateRange = paging.generateRange(last, current);
 
       expect(range.calledWith(4, 8)).to.be.true;
     });
