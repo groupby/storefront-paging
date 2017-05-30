@@ -23,6 +23,7 @@ class Paging extends Component {
     lastPage: () => this.flux.switchPage(this.state.last),
     prevPage: () => this.flux.switchPage(this.state.previous),
     nextPage: () => this.flux.switchPage(this.state.next),
+    switchPage: (page: number) => () => this.flux.switchPage(page)
   };
 
   constructor() {
@@ -44,7 +45,6 @@ class Paging extends Component {
   }
 
   generateRange(lastPage: number, current: number) {
-    this.log.warn(lastPage, current);
     const limit = this.props.limit;
     const last = Math.min(lastPage, limit);
     const border = Math.floor(limit / 2);
@@ -97,6 +97,7 @@ namespace Paging {
     lastPage(): void;
     prevPage(): void;
     nextPage(): void;
+    switchPage(page: number): () => void;
   }
 }
 
