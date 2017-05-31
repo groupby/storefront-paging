@@ -1,6 +1,6 @@
-import { view, Component, Events, Store } from '@storefront/core';
+import { tag, Events, Store, Tag } from '@storefront/core';
 
-@view('gb-paging', require('./index.html'), [
+@tag('gb-paging', require('./index.html'), [
   { name: 'showIcons', default: true },
   { name: 'showLabels', default: true },
   { name: 'numericLabels', type: 'boolean' },
@@ -15,10 +15,10 @@ import { view, Component, Events, Store } from '@storefront/core';
     },
   }
 ])
-class Paging extends Component {
+class Paging {
 
-  props: Paging.Props;
-  state: Partial<Paging.State> = {
+  state: Paging.State = {
+    range: [],
     firstPage: () => this.flux.switchPage(this.state.first),
     lastPage: () => this.flux.switchPage(this.state.last),
     prevPage: () => this.flux.switchPage(this.state.previous),
@@ -26,21 +26,21 @@ class Paging extends Component {
     switchPage: (page: number) => () => this.flux.switchPage(page)
   };
 
-  constructor() {
-    super();
+  init() {
     this.expose('paging');
     this.flux.on(Events.PAGE_UPDATED, this.updatePage);
   }
 
   updatePage = (page: Store.Page) => {
+    const range = this.generateRange(page.last, page.current);
     this.set({
       ...this.props,
       ...page,
+      range,
       backDisabled: page.previous === null,
       forwardDisabled: page.next === null,
-      highOverflow: page.range[page.range.length - 1] !== page.last,
-      lowOverflow: page.range[0] !== 1,
-      range: this.generateRange(page.last, page.current),
+      highOverflow: range[range.length - 1] !== page.last,
+      lowOverflow: range[0] !== 1,
     });
   }
 
@@ -66,6 +66,7 @@ class Paging extends Component {
   }
 }
 
+interface Paging extends Tag<Paging.Props, Paging.State> { }
 namespace Paging {
   export interface Props {
     showIcons?: boolean;
@@ -77,7 +78,7 @@ namespace Paging {
       prev?: string;
       next?: string;
     };
-    limit: number;
+    limit?: number;
     icons?: {
       first?: string;
       last?: string;
@@ -86,7 +87,7 @@ namespace Paging {
     };
   }
 
-  export interface State extends Store.Page, Props {
+  export interface State extends Partial<Store.Page>, Props {
     highOverflow?: boolean;
     lowOverflow?: boolean;
     backDisabled?: boolean;

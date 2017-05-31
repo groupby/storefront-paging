@@ -2,7 +2,7 @@ import * as storefront from '@storefront/core';
 import * as mock from 'mock-require';
 import * as sinon from 'sinon';
 
-sinon.stub(storefront, 'view');
+sinon.stub(storefront, 'tag').returns(() => null);
 
 mock('../src/pager/index.html', {});
 mock('../src/pages/index.html', {});

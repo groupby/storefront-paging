@@ -1,93 +1,83 @@
-import { Component, Events } from '@storefront/core';
+import { Events } from '@storefront/core';
 import Paging from '../../src/paging';
 import suite from './_suite';
 
 suite('Paging', ({ expect, spy }) => {
+  let paging: Paging;
 
-  describe('state', () => {
-    let paging: Paging;
+  beforeEach(() => paging = new Paging());
 
-    beforeEach(() => {
-      Component.prototype.expose = () => null;
-      Component.prototype.flux = <any>{ on: () => null };
+  describe('constructor()', () => {
+    describe('state', () => {
+      describe('firstPage()', () => {
+        it('should call flux.switchPage() with state.first', () => {
+          const switchPage = spy();
+          const first = paging.state.first = <any>2;
+          paging.flux = <any>{ switchPage };
 
-      paging = new Paging();
-    });
+          paging.state.firstPage();
 
-    describe('firstPage()', () => {
-      it('should call flux.switchPage() with state.first', () => {
-        const switchPage = paging.flux.switchPage = spy();
-        const first = paging.state.first = <any>2;
-
-        paging.state.firstPage();
-
-        expect(switchPage.calledWith(paging.state.first)).to.be.true;
+          expect(switchPage.calledWith(first)).to.be.true;
+        });
       });
-    });
 
-    describe('lastPage()', () => {
-      it('should call flux.switchPage() with state.last', () => {
-        const switchPage = paging.flux.switchPage = spy();
-        const last = paging.state.last = 4;
+      describe('lastPage()', () => {
+        it('should call flux.switchPage() with state.last', () => {
+          const switchPage = spy();
+          const last = paging.state.last = 4;
+          paging.flux = <any>{ switchPage };
 
-        paging.state.lastPage();
+          paging.state.lastPage();
 
-        expect(switchPage.calledWith(last)).to.be.true;
+          expect(switchPage.calledWith(last)).to.be.true;
+        });
       });
-    });
 
-    describe('prevPage()', () => {
-      it('should call flux.switchPage() with state.previous', () => {
-        const switchPage = paging.flux.switchPage = spy();
-        const previous = paging.state.previous = 3;
+      describe('prevPage()', () => {
+        it('should call flux.switchPage() with state.previous', () => {
+          const switchPage = spy();
+          const previous = paging.state.previous = 3;
+          paging.flux = <any>{ switchPage };
 
-        paging.state.prevPage();
+          paging.state.prevPage();
 
-        expect(switchPage.calledWith(previous)).to.be.true;
+          expect(switchPage.calledWith(previous)).to.be.true;
+        });
       });
-    });
 
-    describe('nextPage()', () => {
-      it('should call flux.switchPage() with state.next', () => {
-        const switchPage = paging.flux.switchPage = spy();
-        const next = paging.state.next = 10;
+      describe('nextPage()', () => {
+        it('should call flux.switchPage() with state.next', () => {
+          const switchPage = spy();
+          const next = paging.state.next = 10;
+          paging.flux = <any>{ switchPage };
 
-        paging.state.nextPage();
+          paging.state.nextPage();
 
-        expect(switchPage.calledWith(next)).to.be.true;
+          expect(switchPage.calledWith(next)).to.be.true;
+        });
       });
     });
   });
 
-  describe('constructor()', () => {
-    afterEach(() => delete Component.prototype.expose);
-
+  describe('init()', () => {
     it('should call expose()', () => {
-      const expose = Component.prototype.expose = spy();
-      Component.prototype.flux = <any>{ on: () => null };
+      const expose = paging.expose = spy();
+      paging.flux = <any>{ on: () => null };
 
-      new Paging();
+      paging.init();
 
       expect(expose.calledWith('paging')).to.be.true;
     });
 
     it('should listen on PAGE_UPDATED event and call updatePage()', () => {
       const on = spy();
-      Component.prototype.expose = () => null;
-      Component.prototype.flux = <any>{ on };
-      const paging = new Paging();
+      paging.expose = () => null;
+      paging.flux = <any>{ on };
+
+      paging.init();
 
       expect(on.calledWith(Events.PAGE_UPDATED, paging.updatePage)).to.be.true;
     });
-  });
-
-  let paging: Paging;
-
-  beforeEach(() => {
-    Component.prototype.expose = () => null;
-    Component.prototype.flux = <any>{ on: () => null };
-
-    paging = new Paging();
   });
 
   describe('updatePage()', () => {
@@ -98,16 +88,14 @@ suite('Paging', ({ expect, spy }) => {
           selected: 0
         },
         current: 5,
-        limit: 5,
         previous: 4,
         next: 6,
         last: 10,
         from: 41,
-        to: 50,
-        range: [1, 2, 3, 4, 5]
+        to: 50
       };
       const set = paging.set = spy();
-      paging.props = <any>{ limit: page.limit };
+      paging.props = <any>{ limit: 5 };
 
       paging.updatePage(page);
 
@@ -116,7 +104,8 @@ suite('Paging', ({ expect, spy }) => {
         backDisabled: false,
         forwardDisabled: false,
         highOverflow: true,
-        lowOverflow: false,
+        lowOverflow: true,
+        limit: 5,
         range: [3, 4, 5, 6, 7]
       })).to.be.true;
     });
@@ -132,7 +121,7 @@ suite('Paging', ({ expect, spy }) => {
 
       const updateRange = paging.generateRange(last, current);
 
-      expect(updateRange).to.eql([1,2,3]);
+      expect(updateRange).to.eql([1, 2, 3]);
     });
     // TODO: move to integration tests
     it('should return correct range when current page is close to lastPage', () => {
@@ -195,9 +184,9 @@ suite('Paging', ({ expect, spy }) => {
 
   describe('range()', () => {
     it('should return an array of numbers from low to high', () => {
-      expect(paging.range(3, 10)).to.eql([3,4,5,6,7,8,9,10]);
-      expect(paging.range(2, 5)).to.eql([2,3,4,5]);
-      expect(paging.range(0, 1)).to.eql([0,1]);
+      expect(paging.range(3, 10)).to.eql([3, 4, 5, 6, 7, 8, 9, 10]);
+      expect(paging.range(2, 5)).to.eql([2, 3, 4, 5]);
+      expect(paging.range(0, 1)).to.eql([0, 1]);
     });
   });
 });
