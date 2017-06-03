@@ -60,15 +60,6 @@ suite('Paging', ({ expect, spy }) => {
   });
 
   describe('init()', () => {
-    it('should call expose()', () => {
-      const expose = paging.expose = spy();
-      paging.flux = <any>{ on: () => null };
-
-      paging.init();
-
-      expect(expose.calledWith('paging')).to.be.true;
-    });
-
     it('should listen on PAGE_UPDATED event and call updatePage()', () => {
       const on = spy();
       paging.expose = () => null;
