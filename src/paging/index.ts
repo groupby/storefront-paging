@@ -1,22 +1,17 @@
-import { tag, Events, Store, Tag } from '@storefront/core';
+import { alias, tag, Events, Store, Tag } from '@storefront/core';
 
-@tag('gb-paging', require('./index.html'), [
-  { name: 'showIcons', default: true },
-  { name: 'showLabels', default: true },
-  { name: 'numericLabels', type: 'boolean' },
-  { name: 'labels', default: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' } },
-  { name: 'limit', default: 5 },
-  {
-    name: 'icons', default: {
-      // first: require('./double-arrow-left.png'),
-      // next: require('./arrow-right.png'),
-      // prev: require('./arrow-left.png'),
-      // last: require('./double-arrow-right.png')
-    },
-  }
-])
+@alias('paging')
+@tag('gb-paging', require('./index.html'))
 class Paging {
 
+  props: Paging.Props = {
+    showIcons: true,
+    showLabels: true,
+    numericLabels: false,
+    labels: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' },
+    limit: 5,
+    icons: {}
+  };
   state: Paging.State = {
     range: [],
     firstPage: () => this.flux.switchPage(this.state.first),
@@ -27,7 +22,6 @@ class Paging {
   };
 
   init() {
-    this.expose('paging');
     this.flux.on(Events.PAGE_UPDATED, this.updatePage);
   }
 
@@ -58,7 +52,7 @@ class Paging {
   }
 
   range(low: number, high: number) {
-    let arr = [];
+    const arr = [];
     for (let i = low; i < high + 1; i++) {
       arr.push(i);
     }

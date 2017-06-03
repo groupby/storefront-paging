@@ -1,3 +1,3 @@
-import { tag } from '@storefront/core';
+import { view } from '@storefront/core';
 
-tag('gb-pages', require('./index.html'), require('./index.css'))();
+view('gb-pages', require('./index.html'), require('./index.css'));
