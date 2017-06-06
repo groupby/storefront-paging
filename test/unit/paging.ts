@@ -8,7 +8,24 @@ suite('Paging', ({ expect, spy }) => {
   beforeEach(() => paging = new Paging());
 
   describe('constructor()', () => {
+    describe('props', () => {
+      it('should have initial value', () => {
+        expect(paging.props).to.eql({
+          showIcons: true,
+          showLabels: true,
+          numericLabels: false,
+          labels: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' },
+          limit: 5,
+          icons: {}
+        });
+      });
+    });
+
     describe('state', () => {
+      it('should have initial value', () => {
+        expect(paging.state.range).to.eql([]);
+      });
+
       describe('firstPage()', () => {
         it('should call flux.switchPage() with state.first', () => {
           const switchPage = spy();
@@ -54,6 +71,20 @@ suite('Paging', ({ expect, spy }) => {
           paging.state.nextPage();
 
           expect(switchPage).to.be.calledWith(next);
+        });
+      });
+
+      describe('switchPage()', () => {
+        it('should return page-switching function', () => {
+          const switchPage = spy();
+          paging.flux = <any>{ switchPage };
+          const changePage = paging.state.switchPage(4);
+
+          expect(changePage).to.be.a('function');
+
+          changePage();
+
+          expect(switchPage).to.be.calledWith(4);
         });
       });
     });
