@@ -1,8 +1,8 @@
-import * as storefront from '@storefront/core';
+import * as chai from 'chai';
 import * as mock from 'mock-require';
-import * as sinon from 'sinon';
+import * as sinonChai from 'sinon-chai';
 
-sinon.stub(storefront, 'tag').returns(() => null);
+chai.use(sinonChai);
 
 mock('../src/pager/index.html', {});
 mock('../src/pages/index.html', {});
