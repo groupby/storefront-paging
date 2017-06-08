@@ -8,7 +8,24 @@ suite('Paging', ({ expect, spy }) => {
   beforeEach(() => paging = new Paging());
 
   describe('constructor()', () => {
+    describe('props', () => {
+      it('should have initial value', () => {
+        expect(paging.props).to.eql({
+          showIcons: true,
+          showLabels: true,
+          numericLabels: false,
+          labels: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' },
+          limit: 5,
+          icons: {}
+        });
+      });
+    });
+
     describe('state', () => {
+      it('should have initial value', () => {
+        expect(paging.state.range).to.eql([]);
+      });
+
       describe('firstPage()', () => {
         it('should call flux.switchPage() with state.first', () => {
           const switchPage = spy();
@@ -17,7 +34,7 @@ suite('Paging', ({ expect, spy }) => {
 
           paging.state.firstPage();
 
-          expect(switchPage.calledWith(first)).to.be.true;
+          expect(switchPage).to.be.calledWith(first);
         });
       });
 
@@ -29,7 +46,7 @@ suite('Paging', ({ expect, spy }) => {
 
           paging.state.lastPage();
 
-          expect(switchPage.calledWith(last)).to.be.true;
+          expect(switchPage).to.be.calledWith(last);
         });
       });
 
@@ -41,7 +58,7 @@ suite('Paging', ({ expect, spy }) => {
 
           paging.state.prevPage();
 
-          expect(switchPage.calledWith(previous)).to.be.true;
+          expect(switchPage).to.be.calledWith(previous);
         });
       });
 
@@ -53,7 +70,21 @@ suite('Paging', ({ expect, spy }) => {
 
           paging.state.nextPage();
 
-          expect(switchPage.calledWith(next)).to.be.true;
+          expect(switchPage).to.be.calledWith(next);
+        });
+      });
+
+      describe('switchPage()', () => {
+        it('should return page-switching function', () => {
+          const switchPage = spy();
+          paging.flux = <any>{ switchPage };
+          const changePage = paging.state.switchPage(4);
+
+          expect(changePage).to.be.a('function');
+
+          changePage();
+
+          expect(switchPage).to.be.calledWith(4);
         });
       });
     });
@@ -67,7 +98,7 @@ suite('Paging', ({ expect, spy }) => {
 
       paging.init();
 
-      expect(on.calledWith(Events.PAGE_UPDATED, paging.updatePage)).to.be.true;
+      expect(on).to.be.calledWith(Events.PAGE_UPDATED, paging.updatePage);
     });
   });
 
@@ -90,7 +121,7 @@ suite('Paging', ({ expect, spy }) => {
 
       paging.updatePage(page);
 
-      expect(set.calledWith({
+      expect(set).to.be.calledWith({
         ...page,
         backDisabled: false,
         forwardDisabled: false,
@@ -98,7 +129,7 @@ suite('Paging', ({ expect, spy }) => {
         lowOverflow: true,
         limit: 5,
         range: [3, 4, 5, 6, 7]
-      })).to.be.true;
+      });
     });
   });
 
@@ -146,7 +177,7 @@ suite('Paging', ({ expect, spy }) => {
 
       paging.generateRange(last, current);
 
-      expect(range.calledWith(1, limit)).to.be.true;
+      expect(range).to.be.calledWith(1, limit);
     });
 
     it('should call range() when current page is close to lastPage', () => {
@@ -157,7 +188,7 @@ suite('Paging', ({ expect, spy }) => {
 
       paging.generateRange(last, current);
 
-      expect(range.calledWith(6, 10)).to.be.true;
+      expect(range).to.be.calledWith(6, 10);
     });
 
     it('should call range() when current page is in the middle', () => {
@@ -169,7 +200,7 @@ suite('Paging', ({ expect, spy }) => {
 
       const updateRange = paging.generateRange(last, current);
 
-      expect(range.calledWith(4, 8)).to.be.true;
+      expect(range).to.be.calledWith(4, 8);
     });
   });
 
