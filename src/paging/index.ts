@@ -14,11 +14,11 @@ class Paging {
   };
   state: Paging.State = {
     range: [],
-    firstPage: () => this.flux.switchPage(this.state.first),
-    lastPage: () => this.flux.switchPage(this.state.last),
-    prevPage: () => this.flux.switchPage(this.state.previous),
-    nextPage: () => this.flux.switchPage(this.state.next),
-    switchPage: (page: number) => () => this.flux.switchPage(page)
+    firstPage: () => this.actions.updateCurrentPage(this.state.first),
+    lastPage: () => this.actions.updateCurrentPage(this.state.last),
+    prevPage: () => this.actions.updateCurrentPage(this.state.previous),
+    nextPage: () => this.actions.updateCurrentPage(this.state.next),
+    switchPage: (page: number) => () => this.actions.updateCurrentPage(page)
   };
 
   init() {
