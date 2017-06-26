@@ -1,6 +1,0 @@
-.gb-pages.gb-low-overflow::before,
-.gb-pages.gb-high-overflow::after {
-  content: "…";
-  text-decoration: none;
-  color: #888;
-}
