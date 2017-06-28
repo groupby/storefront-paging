@@ -27,7 +27,7 @@ suite('Paging', ({ expect, spy }) => {
       });
 
       describe('firstPage()', () => {
-        it('should call actions.switchPage() with state.first', () => {
+        it('should call actions.updateCurrentPage() with state.first', () => {
           const updateCurrentPage = spy();
           const first = paging.state.first = <any>2;
           paging.actions = <any>{ updateCurrentPage };
@@ -39,7 +39,7 @@ suite('Paging', ({ expect, spy }) => {
       });
 
       describe('lastPage()', () => {
-        it('should call actions.switchPage() with state.last', () => {
+        it('should call actions.updateCurrentPage() with state.last', () => {
           const updateCurrentPage = spy();
           const last = paging.state.last = 4;
           paging.actions = <any>{ updateCurrentPage };
@@ -51,7 +51,7 @@ suite('Paging', ({ expect, spy }) => {
       });
 
       describe('prevPage()', () => {
-        it('should call actions.switchPage() with state.previous', () => {
+        it('should call actions.updateCurrentPage() with state.previous', () => {
           const updateCurrentPage = spy();
           const previous = paging.state.previous = 3;
           paging.actions = <any>{ updateCurrentPage };
@@ -63,7 +63,7 @@ suite('Paging', ({ expect, spy }) => {
       });
 
       describe('nextPage()', () => {
-        it('should call actions.switchPage() with state.next', () => {
+        it('should call actions.updateCurrentPage() with state.next', () => {
           const updateCurrentPage = spy();
           const next = paging.state.next = 10;
           paging.actions = <any>{ updateCurrentPage };
@@ -74,7 +74,7 @@ suite('Paging', ({ expect, spy }) => {
         });
       });
 
-      describe('switchPage()', () => {
+      describe('updateCurrentPage()', () => {
         it('should return page-switching function', () => {
           const updateCurrentPage = spy();
           const changePage = paging.state.switchPage(4);
