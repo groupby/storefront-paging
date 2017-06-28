@@ -27,64 +27,64 @@ suite('Paging', ({ expect, spy }) => {
       });
 
       describe('firstPage()', () => {
-        it('should call flux.switchPage() with state.first', () => {
-          const switchPage = spy();
+        it('should call actions.updateCurrentPage() with state.first', () => {
+          const updateCurrentPage = spy();
           const first = paging.state.first = <any>2;
-          paging.flux = <any>{ switchPage };
+          paging.actions = <any>{ updateCurrentPage };
 
           paging.state.firstPage();
 
-          expect(switchPage).to.be.calledWith(first);
+          expect(updateCurrentPage).to.be.calledWith(first);
         });
       });
 
       describe('lastPage()', () => {
-        it('should call flux.switchPage() with state.last', () => {
-          const switchPage = spy();
+        it('should call actions.updateCurrentPage() with state.last', () => {
+          const updateCurrentPage = spy();
           const last = paging.state.last = 4;
-          paging.flux = <any>{ switchPage };
+          paging.actions = <any>{ updateCurrentPage };
 
           paging.state.lastPage();
 
-          expect(switchPage).to.be.calledWith(last);
+          expect(updateCurrentPage).to.be.calledWith(last);
         });
       });
 
       describe('prevPage()', () => {
-        it('should call flux.switchPage() with state.previous', () => {
-          const switchPage = spy();
+        it('should call actions.updateCurrentPage() with state.previous', () => {
+          const updateCurrentPage = spy();
           const previous = paging.state.previous = 3;
-          paging.flux = <any>{ switchPage };
+          paging.actions = <any>{ updateCurrentPage };
 
           paging.state.prevPage();
 
-          expect(switchPage).to.be.calledWith(previous);
+          expect(updateCurrentPage).to.be.calledWith(previous);
         });
       });
 
       describe('nextPage()', () => {
-        it('should call flux.switchPage() with state.next', () => {
-          const switchPage = spy();
+        it('should call actions.updateCurrentPage() with state.next', () => {
+          const updateCurrentPage = spy();
           const next = paging.state.next = 10;
-          paging.flux = <any>{ switchPage };
+          paging.actions = <any>{ updateCurrentPage };
 
           paging.state.nextPage();
 
-          expect(switchPage).to.be.calledWith(next);
+          expect(updateCurrentPage).to.be.calledWith(next);
         });
       });
 
-      describe('switchPage()', () => {
+      describe('updateCurrentPage()', () => {
         it('should return page-switching function', () => {
-          const switchPage = spy();
-          paging.flux = <any>{ switchPage };
+          const updateCurrentPage = spy();
           const changePage = paging.state.switchPage(4);
+          paging.actions = <any>{ updateCurrentPage };
 
           expect(changePage).to.be.a('function');
 
           changePage();
 
-          expect(switchPage).to.be.calledWith(4);
+          expect(updateCurrentPage).to.be.calledWith(4);
         });
       });
     });
@@ -145,6 +145,7 @@ suite('Paging', ({ expect, spy }) => {
 
       expect(updateRange).to.eql([1, 2, 3]);
     });
+
     // TODO: move to integration tests
     it('should return correct range when current page is close to lastPage', () => {
       const limit = 5;
@@ -156,6 +157,7 @@ suite('Paging', ({ expect, spy }) => {
 
       expect(updateRange).to.eql([6, 7, 8, 9, 10]);
     });
+
     // TODO: move to integration tests
     it('should return correct range when current page is in the middle', () => {
       const limit = 5;
