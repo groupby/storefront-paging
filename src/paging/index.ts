@@ -1,5 +1,6 @@
-import { alias, tag, Events, Store, Tag } from '@storefront/core';
+import { alias, configurable, tag, Events, Store, Tag } from '@storefront/core';
 
+@configurable
 @alias('paging')
 @tag('gb-paging', require('./index.html'))
 class Paging {

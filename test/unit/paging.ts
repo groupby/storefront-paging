@@ -2,10 +2,13 @@ import { Events } from '@storefront/core';
 import Paging from '../../src/paging';
 import suite from './_suite';
 
-suite('Paging', ({ expect, spy }) => {
+suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => {
   let paging: Paging;
 
   beforeEach(() => paging = new Paging());
+
+  itShouldBeConfigurable(Paging);
+  itShouldHaveAlias(Paging, 'paging');
 
   describe('constructor()', () => {
     describe('props', () => {
