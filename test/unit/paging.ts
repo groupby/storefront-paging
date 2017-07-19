@@ -133,87 +133,87 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
         limit: 5,
         range: [3, 4, 5, 6, 7]
       });
-  });
-});
-
-describe('updateRange()', () => {
-  // TODO: move to integration tests
-  it('should return correct range when current page is close to firstPage', () => {
-    const limit = 3;
-    const last = 10;
-    const current = 1;
-    paging.props = <any>{ limit };
-
-    const updateRange = paging.generateRange(last, current);
-
-    expect(updateRange).to.eql([1, 2, 3]);
+    });
   });
 
-  // TODO: move to integration tests
-  it('should return correct range when current page is close to lastPage', () => {
-    const limit = 5;
-    const last = 10;
-    const current = 8;
-    paging.props = <any>{ limit };
+  describe('updateRange()', () => {
+    // TODO: move to integration tests
+    it('should return correct range when current page is close to firstPage', () => {
+      const limit = 3;
+      const last = 10;
+      const current = 1;
+      paging.props = <any>{ limit };
 
-    const updateRange = paging.generateRange(last, current);
+      const updateRange = paging.generateRange(last, current);
 
-    expect(updateRange).to.eql([6, 7, 8, 9, 10]);
+      expect(updateRange).to.eql([1, 2, 3]);
+    });
+
+    // TODO: move to integration tests
+    it('should return correct range when current page is close to lastPage', () => {
+      const limit = 5;
+      const last = 10;
+      const current = 8;
+      paging.props = <any>{ limit };
+
+      const updateRange = paging.generateRange(last, current);
+
+      expect(updateRange).to.eql([6, 7, 8, 9, 10]);
+    });
+
+    // TODO: move to integration tests
+    it('should return correct range when current page is in the middle', () => {
+      const limit = 5;
+      const last = 10;
+      const current = 6;
+      paging.props = <any>{ limit };
+
+      const updateRange = paging.generateRange(last, current);
+
+      expect(updateRange).to.eql([4, 5, 6, 7, 8]);
+    });
+
+    it('should call range() when current page is close to firstPage', () => {
+      const limit = 3;
+      const last = 10;
+      const current = 1;
+      const range = paging.range = spy();
+      paging.props = <any>{ limit };
+
+      paging.generateRange(last, current);
+
+      expect(range).to.be.calledWith(1, limit);
+    });
+
+    it('should call range() when current page is close to lastPage', () => {
+      const last = 10;
+      const current = 8;
+      const range = paging.range = spy();
+      paging.props = <any>{ limit: 5 };
+
+      paging.generateRange(last, current);
+
+      expect(range).to.be.calledWith(6, 10);
+    });
+
+    it('should call range() when current page is in the middle', () => {
+      const limit = 5;
+      const last = 10;
+      const current = 6;
+      const range = paging.range = spy();
+      paging.props = <any>{ limit };
+
+      const updateRange = paging.generateRange(last, current);
+
+      expect(range).to.be.calledWith(4, 8);
+    });
   });
 
-  // TODO: move to integration tests
-  it('should return correct range when current page is in the middle', () => {
-    const limit = 5;
-    const last = 10;
-    const current = 6;
-    paging.props = <any>{ limit };
-
-    const updateRange = paging.generateRange(last, current);
-
-    expect(updateRange).to.eql([4, 5, 6, 7, 8]);
+  describe('range()', () => {
+    it('should return an array of numbers from low to high', () => {
+      expect(paging.range(3, 10)).to.eql([3, 4, 5, 6, 7, 8, 9, 10]);
+      expect(paging.range(2, 5)).to.eql([2, 3, 4, 5]);
+      expect(paging.range(0, 1)).to.eql([0, 1]);
+    });
   });
-
-  it('should call range() when current page is close to firstPage', () => {
-    const limit = 3;
-    const last = 10;
-    const current = 1;
-    const range = paging.range = spy();
-    paging.props = <any>{ limit };
-
-    paging.generateRange(last, current);
-
-    expect(range).to.be.calledWith(1, limit);
-  });
-
-  it('should call range() when current page is close to lastPage', () => {
-    const last = 10;
-    const current = 8;
-    const range = paging.range = spy();
-    paging.props = <any>{ limit: 5 };
-
-    paging.generateRange(last, current);
-
-    expect(range).to.be.calledWith(6, 10);
-  });
-
-  it('should call range() when current page is in the middle', () => {
-    const limit = 5;
-    const last = 10;
-    const current = 6;
-    const range = paging.range = spy();
-    paging.props = <any>{ limit };
-
-    const updateRange = paging.generateRange(last, current);
-
-    expect(range).to.be.calledWith(4, 8);
-  });
-});
-
-describe('range()', () => {
-  it('should return an array of numbers from low to high', () => {
-    expect(paging.range(3, 10)).to.eql([3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(paging.range(2, 5)).to.eql([2, 3, 4, 5]);
-    expect(paging.range(0, 1)).to.eql([0, 1]);
-  });
-});
 });
