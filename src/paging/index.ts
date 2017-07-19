@@ -37,28 +37,28 @@ class Paging {
       highOverflow: range[range.length - 1] !== page.last,
       lowOverflow: range[0] !== 1,
     });
-}
-
-generateRange(lastPage: number, current: number) {
-  const limit = this.props.limit;
-  const last = Math.min(lastPage, limit);
-  const border = Math.floor(limit / 2);
-  if (current <= border) {
-    return this.range(1, last);
-  } else if (current >= lastPage - border) {
-    return this.range(lastPage - last + 1, lastPage);
-  } else {
-    return this.range(current - border, current + border);
   }
-}
 
-range(low: number, high: number) {
-  const arr = [];
-  for (let i = low; i < high + 1; i++) {
-    arr.push(i);
+  generateRange(lastPage: number, current: number) {
+    const limit = this.props.limit;
+    const last = Math.min(lastPage, limit);
+    const border = Math.floor(limit / 2);
+    if (current <= border) {
+      return this.range(1, last);
+    } else if (current >= lastPage - border) {
+      return this.range(lastPage - last + 1, lastPage);
+    } else {
+      return this.range(current - border, current + border);
+    }
   }
-  return arr;
-}
+
+  range(low: number, high: number) {
+    const arr = [];
+    for (let i = low; i < high + 1; i++) {
+      arr.push(i);
+    }
+    return arr;
+  }
 }
 
 interface Paging extends Tag<Paging.Props, Paging.State> { }
