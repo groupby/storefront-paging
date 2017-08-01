@@ -63,7 +63,7 @@ class Paging {
 
 interface Paging extends Tag<Paging.Props, Paging.State> { }
 namespace Paging {
-  export interface Props {
+  export interface Props extends Tag.Props {
     showIcons?: boolean;
     showLabels?: boolean;
     numericLabels?: boolean;
