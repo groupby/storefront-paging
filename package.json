@@ -67,7 +67,7 @@
     "typedoc": "^0.8.0",
     "typescript": "^2.4.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@storefront/core": "~1.10.2"
   }
 }
