@@ -31,13 +31,18 @@ class Paging {
   };
   state: Paging.State = {
     range: [],
-    ...this.searchActions,
+    firstPage: () => null,
+    lastPage: () => null,
+    prevPage: () => null,
+    nextPage: () => null,
+    switchPage: () => () => null,
   };
 
   init() {
     switch (this.props.storeSection) {
       case StoreSections.SEARCH:
         this.flux.on(Events.PAGE_UPDATED, this.updatePage);
+        this.set(this.searchActions);
         break;
       case StoreSections.PAST_PURCHASES:
         this.flux.on(Events.PAST_PURCHASE_PAGE_UPDATED, this.updatePage);
