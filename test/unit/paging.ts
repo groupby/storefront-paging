@@ -1,11 +1,27 @@
-import { Events, StoreSections } from '@storefront/core';
+import { Events, Selectors, StoreSections } from '@storefront/core';
 import Paging from '../../src/paging';
 import suite from './_suite';
 
-suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => {
+suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias }) => {
   let paging: Paging;
+  const page = <any>{
+    sizes: {
+      items: [10, 20, 30],
+      selected: 0
+    },
+    current: 5,
+    previous: 4,
+    next: 6,
+    last: 10,
+    from: 41,
+    to: 50
+  };
 
-  beforeEach(() => paging = new Paging());
+  beforeEach(() => {
+    paging = new Paging();
+    const select = paging.select = stub();
+    select.withArgs(Selectors.pageObject).returns(page);
+  });
 
   itShouldBeConfigurable(Paging);
   itShouldHaveAlias(Paging, 'paging');
@@ -221,6 +237,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
     it('should listen on PAGE_UPDATED event and call updatePage() when storeSection is search', () => {
       const on = spy();
       const set = paging.set = spy();
+      paging.updatePage = spy();
       paging.expose = () => null;
       paging.flux = <any>{ on };
       paging.props = { storeSection: StoreSections.SEARCH };
@@ -253,26 +270,25 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
       expect(on).to.not.be.called;
       expect(set).to.not.be.called;
     });
+
+    it('should call updatePage', () => {
+      const on = spy();
+      const updatePage = paging.updatePage = spy();
+      paging.expose = () => null;
+      paging.flux = <any>{ on };
+
+      paging.init();
+
+      expect(updatePage).to.be.calledOnce;
+    });
   });
 
   describe('updatePage()', () => {
     it('should call set with updated values', () => {
-      const page = <any>{
-        sizes: {
-          items: [10, 20, 30],
-          selected: 0
-        },
-        current: 5,
-        previous: 4,
-        next: 6,
-        last: 10,
-        from: 41,
-        to: 50
-      };
       const set = paging.set = spy();
       paging.props = <any>{ limit: 5 };
 
-      paging.updatePage(page);
+      paging.updatePage();
 
       expect(set).to.be.calledWithExactly({
         ...page,
