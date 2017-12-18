@@ -1,4 +1,4 @@
-import { Events } from '@storefront/core';
+import { Events, StoreSections } from '@storefront/core';
 import Paging from '../../src/paging';
 import suite from './_suite';
 
@@ -29,79 +29,229 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
         expect(paging.state.range).to.eql([]);
       });
 
-      describe('firstPage()', () => {
-        it('should call actions.updateCurrentPage() with state.first', () => {
-          const updateCurrentPage = spy();
-          const first = paging.state.first = <any>2;
-          paging.actions = <any>{ updateCurrentPage };
+      describe('when storeSection is invalid', () => {
+        let updateCurrentPage;
+        let updatePastPurchaseCurrentPage;
+        beforeEach(() => {
+          updateCurrentPage = spy();
+          updatePastPurchaseCurrentPage = spy();
+        });
 
-          paging.state.firstPage();
+        describe('firstPage()', () => {
+          it('should not call any actions', () => {
+            paging.state.firstPage();
+          });
+        });
 
-          expect(updateCurrentPage).to.be.calledWith(first);
+        describe('lastPage()', () => {
+          it('should not call any actions', () => {
+            paging.state.lastPage();
+          });
+        });
+
+        describe('prevPage()', () => {
+          it('should not call any actions', () => {
+            paging.state.prevPage();
+          });
+        });
+
+        describe('nextPage()', () => {
+          it('should not call any actions', () => {
+            paging.state.nextPage();
+          });
+        });
+
+        describe('updateCurrentPage()', () => {
+          it('should not call any actions', () => {
+            paging.state.switchPage(1)();
+          });
+        });
+
+        afterEach(() => {
+          expect(updateCurrentPage).to.not.be.called;
+          expect(updatePastPurchaseCurrentPage).to.not.be.called;
         });
       });
 
-      describe('lastPage()', () => {
-        it('should call actions.updateCurrentPage() with state.last', () => {
-          const updateCurrentPage = spy();
-          const last = paging.state.last = 4;
-          paging.actions = <any>{ updateCurrentPage };
+      describe('when storeSection is search', () => {
+        beforeEach(() => {
+          paging.state = {
+            ...paging.state,
+            ...paging.searchActions
+          };
+        });
 
-          paging.state.lastPage();
+        describe('firstPage()', () => {
+          it('should call actions.updateCurrentPage() with state.first', () => {
+            const updateCurrentPage = spy();
+            const first = paging.state.first = <any>2;
+            paging.actions = <any>{ updateCurrentPage };
 
-          expect(updateCurrentPage).to.be.calledWith(last);
+            paging.state.firstPage();
+
+            expect(updateCurrentPage).to.be.calledWithExactly(first);
+          });
+        });
+
+        describe('lastPage()', () => {
+          it('should call actions.updateCurrentPage() with state.last', () => {
+            const updateCurrentPage = spy();
+            const last = paging.state.last = 4;
+            paging.actions = <any>{ updateCurrentPage };
+
+            paging.state.lastPage();
+
+            expect(updateCurrentPage).to.be.calledWithExactly(last);
+          });
+        });
+
+        describe('prevPage()', () => {
+          it('should call actions.updateCurrentPage() with state.previous', () => {
+            const updateCurrentPage = spy();
+            const previous = paging.state.previous = 3;
+            paging.actions = <any>{ updateCurrentPage };
+
+            paging.state.prevPage();
+
+            expect(updateCurrentPage).to.be.calledWithExactly(previous);
+          });
+        });
+
+        describe('nextPage()', () => {
+          it('should call actions.updateCurrentPage() with state.next', () => {
+            const updateCurrentPage = spy();
+            const next = paging.state.next = 10;
+            paging.actions = <any>{ updateCurrentPage };
+
+            paging.state.nextPage();
+
+            expect(updateCurrentPage).to.be.calledWithExactly(next);
+          });
+        });
+
+        describe('updateCurrentPage()', () => {
+          it('should return page-switching function', () => {
+            const updateCurrentPage = spy();
+            const changePage = paging.state.switchPage(4);
+            paging.actions = <any>{ updateCurrentPage };
+
+            expect(changePage).to.be.a('function');
+
+            changePage();
+
+            expect(updateCurrentPage).to.be.calledWithExactly(4);
+          });
         });
       });
 
-      describe('prevPage()', () => {
-        it('should call actions.updateCurrentPage() with state.previous', () => {
-          const updateCurrentPage = spy();
-          const previous = paging.state.previous = 3;
-          paging.actions = <any>{ updateCurrentPage };
-
-          paging.state.prevPage();
-
-          expect(updateCurrentPage).to.be.calledWith(previous);
+      describe('when storeSection is search', () => {
+        beforeEach(() => {
+          paging.state = {
+            ...paging.state,
+            ...paging.pastPurchaseActions
+          };
         });
-      });
 
-      describe('nextPage()', () => {
-        it('should call actions.updateCurrentPage() with state.next', () => {
-          const updateCurrentPage = spy();
-          const next = paging.state.next = 10;
-          paging.actions = <any>{ updateCurrentPage };
+        describe('firstPage()', () => {
+          it('should call actions.updatePastPurchaseCurrentPage() with state.first', () => {
+            const updatePastPurchaseCurrentPage = spy();
+            const first = paging.state.first = <any>2;
+            paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
-          paging.state.nextPage();
+            paging.state.firstPage();
 
-          expect(updateCurrentPage).to.be.calledWith(next);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(first);
+          });
         });
-      });
 
-      describe('updateCurrentPage()', () => {
-        it('should return page-switching function', () => {
-          const updateCurrentPage = spy();
-          const changePage = paging.state.switchPage(4);
-          paging.actions = <any>{ updateCurrentPage };
+        describe('lastPage()', () => {
+          it('should call actions.updatePastPurchaseCurrentPage() with state.last', () => {
+            const updatePastPurchaseCurrentPage = spy();
+            const last = paging.state.last = 4;
+            paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
-          expect(changePage).to.be.a('function');
+            paging.state.lastPage();
 
-          changePage();
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(last);
+          });
+        });
 
-          expect(updateCurrentPage).to.be.calledWith(4);
+        describe('prevPage()', () => {
+          it('should call actions.updatePastPurchaseCurrentPage() with state.previous', () => {
+            const updatePastPurchaseCurrentPage = spy();
+            const previous = paging.state.previous = 3;
+            paging.actions = <any>{ updatePastPurchaseCurrentPage };
+
+            paging.state.prevPage();
+
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(previous);
+          });
+        });
+
+        describe('nextPage()', () => {
+          it('should call actions.updatePastPurchaseCurrentPage() with state.next', () => {
+            const updatePastPurchaseCurrentPage = spy();
+            const next = paging.state.next = 10;
+            paging.actions = <any>{ updatePastPurchaseCurrentPage };
+
+            paging.state.nextPage();
+
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(next);
+          });
+        });
+
+        describe('updatePastPurchaseCurrentPage()', () => {
+          it('should return page-switching function', () => {
+            const updatePastPurchaseCurrentPage = spy();
+            const changePage = paging.state.switchPage(4);
+            paging.actions = <any>{ updatePastPurchaseCurrentPage };
+
+            expect(changePage).to.be.a('function');
+
+            changePage();
+
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(4);
+          });
         });
       });
     });
   });
 
   describe('init()', () => {
-    it('should listen on PAGE_UPDATED event and call updatePage()', () => {
+    it('should listen on PAGE_UPDATED event and call updatePage() when storeSection is search', () => {
       const on = spy();
+      const set = paging.set = spy();
       paging.expose = () => null;
       paging.flux = <any>{ on };
+      paging.props = { storeSection: StoreSections.SEARCH };
 
       paging.init();
 
-      expect(on).to.be.calledWith(Events.PAGE_UPDATED, paging.updatePage);
+      expect(on).to.be.calledWithExactly(Events.PAGE_UPDATED, paging.updatePage);
+    });
+
+    it(`should listen on PAST_PURCHASE_PAGE_UPDATED event and
+      call updatePage() when storeSection is pastPurchases`, () => {
+        const on = spy();
+        const set = paging.set = spy();
+        paging.expose = () => null;
+        paging.flux = <any>{ on };
+        paging.props = { storeSection: StoreSections.PAST_PURCHASES };
+
+        paging.init();
+
+        expect(on).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
+      });
+
+    it('should not listen to any events or call set when storeSection is invalid', () => {
+      const on = spy();
+      const set = paging.set = spy();
+      paging.props = { storeSection: 'giraffe' };
+
+      paging.init();
+
+      expect(on).to.not.be.called;
+      expect(set).to.not.be.called;
     });
   });
 
@@ -124,7 +274,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.updatePage(page);
 
-      expect(set).to.be.calledWith({
+      expect(set).to.be.calledWithExactly({
         ...page,
         backDisabled: false,
         forwardDisabled: false,
@@ -182,7 +332,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(1, limit);
+      expect(range).to.be.calledWithExactly(1, limit);
     });
 
     it('should call range() when current page is close to lastPage', () => {
@@ -193,7 +343,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(6, 10);
+      expect(range).to.be.calledWithExactly(6, 10);
     });
 
     it('should call range() when current page is in the middle', () => {
@@ -205,7 +355,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       const updateRange = paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(4, 8);
+      expect(range).to.be.calledWithExactly(4, 8);
     });
   });
 

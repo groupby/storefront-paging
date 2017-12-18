@@ -1,9 +1,25 @@
-import { alias, configurable, tag, Events, Store, Tag } from '@storefront/core';
+import { alias, configurable, tag, Events, Store, StoreSections, Tag } from '@storefront/core';
 
 @configurable
 @alias('paging')
 @tag('gb-paging', require('./index.html'))
 class Paging {
+
+  searchActions: Paging.Actions = {
+    firstPage: () => this.actions.updateCurrentPage(this.state.first),
+    lastPage: () => this.actions.updateCurrentPage(this.state.last),
+    prevPage: () => this.actions.updateCurrentPage(this.state.previous),
+    nextPage: () => this.actions.updateCurrentPage(this.state.next),
+    switchPage: (page: number) => () => this.actions.updateCurrentPage(page)
+  };
+
+  pastPurchaseActions: Paging.Actions = {
+    firstPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.first),
+    lastPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.last),
+    prevPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.previous),
+    nextPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.next),
+    switchPage: (page: number) => () => this.actions.updatePastPurchaseCurrentPage(page)
+  };
 
   props: Paging.Props = {
     showIcons: true,
@@ -15,15 +31,24 @@ class Paging {
   };
   state: Paging.State = {
     range: [],
-    firstPage: () => this.actions.updateCurrentPage(this.state.first),
-    lastPage: () => this.actions.updateCurrentPage(this.state.last),
-    prevPage: () => this.actions.updateCurrentPage(this.state.previous),
-    nextPage: () => this.actions.updateCurrentPage(this.state.next),
-    switchPage: (page: number) => () => this.actions.updateCurrentPage(page)
+    firstPage: () => null,
+    lastPage: () => null,
+    prevPage: () => null,
+    nextPage: () => null,
+    switchPage: () => () => null,
   };
 
   init() {
-    this.flux.on(Events.PAGE_UPDATED, this.updatePage);
+    switch (this.props.storeSection) {
+      case StoreSections.SEARCH:
+        this.flux.on(Events.PAGE_UPDATED, this.updatePage);
+        this.set(this.searchActions);
+        break;
+      case StoreSections.PAST_PURCHASES:
+        this.flux.on(Events.PAST_PURCHASE_PAGE_UPDATED, this.updatePage);
+        this.set(this.pastPurchaseActions);
+        break;
+    }
   }
 
   updatePage = (page: Store.Page) => {
@@ -82,18 +107,21 @@ namespace Paging {
     };
   }
 
-  export interface State extends Partial<Store.Page>, Props {
+  export interface Actions {
+    firstPage(): void;
+    lastPage(): void;
+    prevPage(): void;
+    nextPage(): void;
+    switchPage(page: number): () => void;
+  }
+
+  export interface State extends Partial<Store.Page>, Props, Actions {
     highOverflow?: boolean;
     lowOverflow?: boolean;
     backDisabled?: boolean;
     forwardDisabled?: boolean;
     range: number[];
 
-    firstPage(): void;
-    lastPage(): void;
-    prevPage(): void;
-    nextPage(): void;
-    switchPage(page: number): () => void;
   }
 }
 
