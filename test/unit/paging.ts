@@ -89,7 +89,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.firstPage();
 
-            expect(updateCurrentPage).to.be.calledWith(first);
+            expect(updateCurrentPage).to.be.calledWithExactly(first);
           });
         });
 
@@ -101,7 +101,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.lastPage();
 
-            expect(updateCurrentPage).to.be.calledWith(last);
+            expect(updateCurrentPage).to.be.calledWithExactly(last);
           });
         });
 
@@ -113,7 +113,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.prevPage();
 
-            expect(updateCurrentPage).to.be.calledWith(previous);
+            expect(updateCurrentPage).to.be.calledWithExactly(previous);
           });
         });
 
@@ -125,7 +125,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.nextPage();
 
-            expect(updateCurrentPage).to.be.calledWith(next);
+            expect(updateCurrentPage).to.be.calledWithExactly(next);
           });
         });
 
@@ -139,7 +139,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             changePage();
 
-            expect(updateCurrentPage).to.be.calledWith(4);
+            expect(updateCurrentPage).to.be.calledWithExactly(4);
           });
         });
       });
@@ -160,7 +160,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.firstPage();
 
-            expect(updatePastPurchaseCurrentPage).to.be.calledWith(first);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(first);
           });
         });
 
@@ -172,7 +172,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.lastPage();
 
-            expect(updatePastPurchaseCurrentPage).to.be.calledWith(last);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(last);
           });
         });
 
@@ -184,7 +184,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.prevPage();
 
-            expect(updatePastPurchaseCurrentPage).to.be.calledWith(previous);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(previous);
           });
         });
 
@@ -196,7 +196,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             paging.state.nextPage();
 
-            expect(updatePastPurchaseCurrentPage).to.be.calledWith(next);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(next);
           });
         });
 
@@ -210,7 +210,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
             changePage();
 
-            expect(updatePastPurchaseCurrentPage).to.be.calledWith(4);
+            expect(updatePastPurchaseCurrentPage).to.be.calledWithExactly(4);
           });
         });
       });
@@ -227,7 +227,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.init();
 
-      expect(on).to.be.calledWith(Events.PAGE_UPDATED, paging.updatePage);
+      expect(on).to.be.calledWithExactly(Events.PAGE_UPDATED, paging.updatePage);
     });
 
     it(`should listen on PAST_PURCHASE_PAGE_UPDATED event and
@@ -240,7 +240,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
         paging.init();
 
-        expect(on).to.be.calledWith(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
+        expect(on).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
       });
 
     it('should not listen to any events or call set when storeSection is invalid', () => {
@@ -274,7 +274,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.updatePage(page);
 
-      expect(set).to.be.calledWith({
+      expect(set).to.be.calledWithExactly({
         ...page,
         backDisabled: false,
         forwardDisabled: false,
@@ -332,7 +332,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(1, limit);
+      expect(range).to.be.calledWithExactly(1, limit);
     });
 
     it('should call range() when current page is close to lastPage', () => {
@@ -343,7 +343,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(6, 10);
+      expect(range).to.be.calledWithExactly(6, 10);
     });
 
     it('should call range() when current page is in the middle', () => {
@@ -355,7 +355,7 @@ suite('Paging', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => 
 
       const updateRange = paging.generateRange(last, current);
 
-      expect(range).to.be.calledWith(4, 8);
+      expect(range).to.be.calledWithExactly(4, 8);
     });
   });
 
