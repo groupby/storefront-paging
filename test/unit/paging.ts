@@ -4,6 +4,7 @@ import suite from './_suite';
 
 suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias }) => {
   let paging: Paging;
+  let select;
   const page = <any>{
     sizes: {
       items: [10, 20, 30],
@@ -19,7 +20,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
 
   beforeEach(() => {
     paging = new Paging();
-    const select = paging.select = stub();
+    select = paging.select = stub();
     select.withArgs(Selectors.pageObject).returns(page);
   });
 
@@ -237,28 +238,34 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
     it('should listen on PAGE_UPDATED event and call updatePage() when storeSection is search', () => {
       const on = spy();
       const set = paging.set = spy();
-      paging.updatePage = spy();
+      const updatePage = paging.updatePage = spy();
       paging.expose = () => null;
       paging.flux = <any>{ on };
       paging.props = { storeSection: StoreSections.SEARCH };
+      select.returns(page);
 
       paging.init();
 
       expect(on).to.be.calledWithExactly(Events.PAGE_UPDATED, paging.updatePage);
+      expect(select).to.be.calledWithExactly(Selectors.pageObject);
+      expect(updatePage).to.be.calledWithExactly(page);
     });
 
-    it(`should listen on PAST_PURCHASE_PAGE_UPDATED event and
-      call updatePage() when storeSection is pastPurchases`, () => {
-        const on = spy();
-        const set = paging.set = spy();
-        paging.expose = () => null;
-        paging.flux = <any>{ on };
-        paging.props = { storeSection: StoreSections.PAST_PURCHASES };
+    it('should listen on PAST_PURCHASE_PAGE_UPDATED and call updatePage() when storeSection is pastPurchases', () => {
+      const on = spy();
+      const set = paging.set = spy();
+      const updatePage = paging.updatePage = spy();
+      paging.expose = () => null;
+      paging.flux = <any>{ on };
+      paging.props = { storeSection: StoreSections.PAST_PURCHASES };
+      select.returns(page);
 
-        paging.init();
+      paging.init();
 
-        expect(on).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
-      });
+      expect(on).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
+      expect(select).to.be.calledWithExactly(Selectors.pastPurchasePageObject);
+      expect(updatePage).to.be.calledWithExactly(page);
+    });
 
     it('should not listen to any events or call set when storeSection is invalid', () => {
       const on = spy();
@@ -270,17 +277,6 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
       expect(on).to.not.be.called;
       expect(set).to.not.be.called;
     });
-
-    it('should call updatePage', () => {
-      const on = spy();
-      const updatePage = paging.updatePage = spy();
-      paging.expose = () => null;
-      paging.flux = <any>{ on };
-
-      paging.init();
-
-      expect(updatePage).to.be.calledOnce;
-    });
   });
 
   describe('updatePage()', () => {
@@ -288,7 +284,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
       const set = paging.set = spy();
       paging.props = <any>{ limit: 5 };
 
-      paging.updatePage();
+      paging.updatePage(page);
 
       expect(set).to.be.calledWithExactly({
         ...page,
