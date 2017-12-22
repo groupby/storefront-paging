@@ -1,4 +1,4 @@
-import { alias, configurable, tag, Events, Store, StoreSections, Tag } from '@storefront/core';
+import { alias, configurable, tag, Events, Selectors, Store, StoreSections, Tag } from '@storefront/core';
 
 @configurable
 @alias('paging')
@@ -41,10 +41,12 @@ class Paging {
   init() {
     switch (this.props.storeSection) {
       case StoreSections.SEARCH:
+        this.updatePage(this.select(Selectors.pageObject));
         this.flux.on(Events.PAGE_UPDATED, this.updatePage);
         this.set(this.searchActions);
         break;
       case StoreSections.PAST_PURCHASES:
+        this.updatePage(this.select(Selectors.pastPurchasePageObject));
         this.flux.on(Events.PAST_PURCHASE_PAGE_UPDATED, this.updatePage);
         this.set(this.pastPurchaseActions);
         break;
