@@ -236,45 +236,43 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
 
   describe('init()', () => {
     it('should listen on PAGE_UPDATED event and call updatePage() when storeSection is search', () => {
-      const on = spy();
+      const subscribe = paging.subscribe = spy();
       const set = paging.set = spy();
       const updatePage = paging.updatePage = spy();
       paging.expose = () => null;
-      paging.flux = <any>{ on };
       paging.props = { storeSection: StoreSections.SEARCH };
       select.returns(page);
 
       paging.init();
 
-      expect(on).to.be.calledWithExactly(Events.PAGE_UPDATED, paging.updatePage);
+      expect(subscribe).to.be.calledWithExactly(Events.PAGE_UPDATED, paging.updatePage);
       expect(select).to.be.calledWithExactly(Selectors.pageObject);
       expect(updatePage).to.be.calledWithExactly(page);
     });
 
     it('should listen on PAST_PURCHASE_PAGE_UPDATED and call updatePage() when storeSection is pastPurchases', () => {
-      const on = spy();
+      const subscribe = paging.subscribe = spy();
       const set = paging.set = spy();
       const updatePage = paging.updatePage = spy();
       paging.expose = () => null;
-      paging.flux = <any>{ on };
       paging.props = { storeSection: StoreSections.PAST_PURCHASES };
       select.returns(page);
 
       paging.init();
 
-      expect(on).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
+      expect(subscribe).to.be.calledWithExactly(Events.PAST_PURCHASE_PAGE_UPDATED, paging.updatePage);
       expect(select).to.be.calledWithExactly(Selectors.pastPurchasePageObject);
       expect(updatePage).to.be.calledWithExactly(page);
     });
 
     it('should not listen to any events or call set when storeSection is invalid', () => {
-      const on = spy();
+      const subscribe = paging.subscribe = spy();
       const set = paging.set = spy();
       paging.props = { storeSection: 'giraffe' };
 
       paging.init();
 
-      expect(on).to.not.be.called;
+      expect(subscribe).to.not.be.called;
       expect(set).to.not.be.called;
     });
   });
@@ -298,84 +296,81 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
     });
   });
 
-  describe('updateRange()', () => {
-    // TODO: move to integration tests
-    it('should return correct range when current page is close to firstPage', () => {
-      const limit = 3;
-      const last = 10;
-      const current = 1;
-      paging.props = <any>{ limit };
+  describe('static', () => {
+    describe('generateRange()', () => {
+      // TODO: move to integration tests
+      it('should return correct range when current page is close to firstPage', () => {
+        const limit = 3;
+        const last = 10;
+        const current = 1;
 
-      const updateRange = paging.generateRange(last, current);
+        const updateRange = Paging.generateRange(last, current, limit);
 
-      expect(updateRange).to.eql([1, 2, 3]);
+        expect(updateRange).to.eql([1, 2, 3]);
+      });
+
+      // TODO: move to integration tests
+      it('should return correct range when current page is close to lastPage', () => {
+        const limit = 5;
+        const last = 10;
+        const current = 8;
+
+        const updateRange = Paging.generateRange(last, current, limit);
+
+        expect(updateRange).to.eql([6, 7, 8, 9, 10]);
+      });
+
+      // TODO: move to integration tests
+      it('should return correct range when current page is in the middle', () => {
+        const limit = 5;
+        const last = 10;
+        const current = 6;
+
+        const updateRange = Paging.generateRange(last, current, limit);
+
+        expect(updateRange).to.eql([4, 5, 6, 7, 8]);
+      });
+
+      it('should call range() when current page is close to firstPage', () => {
+        const limit = 3;
+        const last = 10;
+        const current = 1;
+        const range = stub(Paging, 'range');
+
+        Paging.generateRange(last, current, limit);
+
+        expect(range).to.be.calledWithExactly(1, limit);
+      });
+
+      it('should call range() when current page is close to lastPage', () => {
+        const last = 10;
+        const current = 8;
+        const range = stub(Paging, 'range');
+
+        Paging.generateRange(last, current, 5);
+
+        expect(range).to.be.calledWithExactly(6, 10);
+      });
+
+      it('should call range() when current page is in the middle', () => {
+        const limit = 5;
+        const last = 10;
+        const current = 6;
+        const range = stub(Paging, 'range');
+        paging.props = <any>{ limit };
+
+        const updateRange = Paging.generateRange(last, current, limit);
+
+        expect(range).to.be.calledWithExactly(4, 8);
+      });
     });
 
-    // TODO: move to integration tests
-    it('should return correct range when current page is close to lastPage', () => {
-      const limit = 5;
-      const last = 10;
-      const current = 8;
-      paging.props = <any>{ limit };
-
-      const updateRange = paging.generateRange(last, current);
-
-      expect(updateRange).to.eql([6, 7, 8, 9, 10]);
-    });
-
-    // TODO: move to integration tests
-    it('should return correct range when current page is in the middle', () => {
-      const limit = 5;
-      const last = 10;
-      const current = 6;
-      paging.props = <any>{ limit };
-
-      const updateRange = paging.generateRange(last, current);
-
-      expect(updateRange).to.eql([4, 5, 6, 7, 8]);
-    });
-
-    it('should call range() when current page is close to firstPage', () => {
-      const limit = 3;
-      const last = 10;
-      const current = 1;
-      const range = paging.range = spy();
-      paging.props = <any>{ limit };
-
-      paging.generateRange(last, current);
-
-      expect(range).to.be.calledWithExactly(1, limit);
-    });
-
-    it('should call range() when current page is close to lastPage', () => {
-      const last = 10;
-      const current = 8;
-      const range = paging.range = spy();
-      paging.props = <any>{ limit: 5 };
-
-      paging.generateRange(last, current);
-
-      expect(range).to.be.calledWithExactly(6, 10);
-    });
-
-    it('should call range() when current page is in the middle', () => {
-      const limit = 5;
-      const last = 10;
-      const current = 6;
-      const range = paging.range = spy();
-      paging.props = <any>{ limit };
-
-      const updateRange = paging.generateRange(last, current);
-
-      expect(range).to.be.calledWithExactly(4, 8);
-    });
-  });
-
-  describe('range()', () => {
-    it('should return an array of numbers from low to high', () => {
-      expect(paging.range(3, 10)).to.eql([3, 4, 5, 6, 7, 8, 9, 10]);
-      expect(paging.range(2, 5)).to.eql([2, 3, 4, 5]);
-      expect(paging.range(0, 1)).to.eql([0, 1]);
+    describe('range()', () => {
+      it('should return an array of numbers from low to high', () => {
+        expect(Paging.range(3, 10)).to.eql([3, 4, 5, 6, 7, 8, 9, 10]);
+        expect(Paging.range(2, 5)).to.eql([2, 3, 4, 5]);
+        expect(Paging.range(0, 1)).to.eql([0, 1]);
+      });
     });
   });
 });

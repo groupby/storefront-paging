@@ -42,19 +42,19 @@ class Paging {
     switch (this.props.storeSection) {
       case StoreSections.SEARCH:
         this.updatePage(this.select(Selectors.pageObject));
-        this.flux.on(Events.PAGE_UPDATED, this.updatePage);
+        this.subscribe(Events.PAGE_UPDATED, this.updatePage);
         this.set(this.searchActions);
         break;
       case StoreSections.PAST_PURCHASES:
         this.updatePage(this.select(Selectors.pastPurchasePageObject));
-        this.flux.on(Events.PAST_PURCHASE_PAGE_UPDATED, this.updatePage);
+        this.subscribe(Events.PAST_PURCHASE_PAGE_UPDATED, this.updatePage);
         this.set(this.pastPurchaseActions);
         break;
     }
   }
 
   updatePage = (page: Store.Page) => {
-    const range = this.generateRange(page.last, page.current);
+    const range = Paging.generateRange(page.last, page.current, this.props.limit);
     this.set({
       ...this.props,
       ...page,
@@ -66,20 +66,19 @@ class Paging {
     });
   }
 
-  generateRange(lastPage: number, current: number) {
-    const limit = this.props.limit;
+  static generateRange(lastPage: number, current: number, limit: number) {
     const last = Math.min(lastPage, limit);
     const border = Math.floor(limit / 2);
     if (current <= border) {
-      return this.range(1, last);
+      return Paging.range(1, last);
     } else if (current >= lastPage - border) {
-      return this.range(lastPage - last + 1, lastPage);
+      return Paging.range(lastPage - last + 1, lastPage);
     } else {
-      return this.range(current - border, current + border);
+      return Paging.range(current - border, current + border);
     }
   }
 
-  range(low: number, high: number) {
+  static range(low: number, high: number) {
     const arr = [];
     for (let i = low; i < high + 1; i++) {
       arr.push(i);
