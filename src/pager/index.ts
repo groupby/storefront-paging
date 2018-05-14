@@ -1,3 +1,9 @@
-import { view } from '@storefront/core';
+import { consume, tag, Tag } from '@storefront/core';
 
-view('gb-pager', require('./index.html'));
+@consume('paging')
+@tag('gb-pager', require('./index.html'))
+class Pager {}
+
+interface Pager extends Tag {}
+
+export default Pager;

@@ -2,20 +2,20 @@ import { Events, Selectors, StoreSections } from '@storefront/core';
 import Paging from '../../src/paging';
 import suite from './_suite';
 
-suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias }) => {
+suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias }) => {
   let paging: Paging;
   let select;
   const page = <any>{
     sizes: {
       items: [10, 20, 30],
-      selected: 0
+      selected: 0,
     },
     current: 5,
     previous: 4,
     next: 6,
     last: 10,
     from: 41,
-    to: 50
+    to: 50,
   };
 
   beforeEach(() => {
@@ -25,7 +25,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
   });
 
   itShouldBeConfigurable(Paging);
-  itShouldHaveAlias(Paging, 'paging');
+  itShouldProvideAlias(Paging, 'paging');
 
   describe('constructor()', () => {
     describe('props', () => {
@@ -36,7 +36,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
           numericLabels: false,
           labels: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' },
           limit: 5,
-          icons: {}
+          icons: {},
         });
       });
     });
@@ -94,14 +94,14 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         beforeEach(() => {
           paging.state = {
             ...paging.state,
-            ...paging.searchActions
+            ...paging.searchActions,
           };
         });
 
         describe('firstPage()', () => {
           it('should call actions.updateCurrentPage() with state.first', () => {
             const updateCurrentPage = spy();
-            const first = paging.state.first = <any>2;
+            const first = (paging.state.first = <any>2);
             paging.actions = <any>{ updateCurrentPage };
 
             paging.state.firstPage();
@@ -113,7 +113,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('lastPage()', () => {
           it('should call actions.updateCurrentPage() with state.last', () => {
             const updateCurrentPage = spy();
-            const last = paging.state.last = 4;
+            const last = (paging.state.last = 4);
             paging.actions = <any>{ updateCurrentPage };
 
             paging.state.lastPage();
@@ -125,7 +125,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('prevPage()', () => {
           it('should call actions.updateCurrentPage() with state.previous', () => {
             const updateCurrentPage = spy();
-            const previous = paging.state.previous = 3;
+            const previous = (paging.state.previous = 3);
             paging.actions = <any>{ updateCurrentPage };
 
             paging.state.prevPage();
@@ -137,7 +137,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('nextPage()', () => {
           it('should call actions.updateCurrentPage() with state.next', () => {
             const updateCurrentPage = spy();
-            const next = paging.state.next = 10;
+            const next = (paging.state.next = 10);
             paging.actions = <any>{ updateCurrentPage };
 
             paging.state.nextPage();
@@ -165,14 +165,14 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         beforeEach(() => {
           paging.state = {
             ...paging.state,
-            ...paging.pastPurchaseActions
+            ...paging.pastPurchaseActions,
           };
         });
 
         describe('firstPage()', () => {
           it('should call actions.updatePastPurchaseCurrentPage() with state.first', () => {
             const updatePastPurchaseCurrentPage = spy();
-            const first = paging.state.first = <any>2;
+            const first = (paging.state.first = <any>2);
             paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
             paging.state.firstPage();
@@ -184,7 +184,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('lastPage()', () => {
           it('should call actions.updatePastPurchaseCurrentPage() with state.last', () => {
             const updatePastPurchaseCurrentPage = spy();
-            const last = paging.state.last = 4;
+            const last = (paging.state.last = 4);
             paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
             paging.state.lastPage();
@@ -196,7 +196,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('prevPage()', () => {
           it('should call actions.updatePastPurchaseCurrentPage() with state.previous', () => {
             const updatePastPurchaseCurrentPage = spy();
-            const previous = paging.state.previous = 3;
+            const previous = (paging.state.previous = 3);
             paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
             paging.state.prevPage();
@@ -208,7 +208,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         describe('nextPage()', () => {
           it('should call actions.updatePastPurchaseCurrentPage() with state.next', () => {
             const updatePastPurchaseCurrentPage = spy();
-            const next = paging.state.next = 10;
+            const next = (paging.state.next = 10);
             paging.actions = <any>{ updatePastPurchaseCurrentPage };
 
             paging.state.nextPage();
@@ -236,10 +236,9 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
 
   describe('init()', () => {
     it('should listen on PAGE_UPDATED event and call updatePage() when storeSection is search', () => {
-      const subscribe = paging.subscribe = spy();
-      const set = paging.set = spy();
-      const updatePage = paging.updatePage = spy();
-      paging.expose = () => null;
+      const subscribe = (paging.subscribe = spy());
+      const set = (paging.set = spy());
+      const updatePage = (paging.updatePage = spy());
       paging.props = { storeSection: StoreSections.SEARCH };
       select.returns(page);
 
@@ -251,10 +250,9 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
     });
 
     it('should listen on PAST_PURCHASE_PAGE_UPDATED and call updatePage() when storeSection is pastPurchases', () => {
-      const subscribe = paging.subscribe = spy();
-      const set = paging.set = spy();
-      const updatePage = paging.updatePage = spy();
-      paging.expose = () => null;
+      const subscribe = (paging.subscribe = spy());
+      const set = (paging.set = spy());
+      const updatePage = (paging.updatePage = spy());
       paging.props = { storeSection: StoreSections.PAST_PURCHASES };
       select.returns(page);
 
@@ -266,8 +264,8 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
     });
 
     it('should not listen to any events or call set when storeSection is invalid', () => {
-      const subscribe = paging.subscribe = spy();
-      const set = paging.set = spy();
+      const subscribe = (paging.subscribe = spy());
+      const set = (paging.set = spy());
       paging.props = { storeSection: 'giraffe' };
 
       paging.init();
@@ -279,7 +277,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
 
   describe('updatePage()', () => {
     it('should call set with updated values', () => {
-      const set = paging.set = spy();
+      const set = (paging.set = spy());
       paging.props = <any>{ limit: 5 };
 
       paging.updatePage(page);
@@ -291,7 +289,7 @@ suite('Paging', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias 
         highOverflow: true,
         lowOverflow: true,
         limit: 5,
-        range: [3, 4, 5, 6, 7]
+        range: [3, 4, 5, 6, 7],
       });
     });
   });

@@ -1,33 +1,16 @@
-import { alias, configurable, tag, Events, Selectors, Store, StoreSections, Tag } from '@storefront/core';
+import { configurable, provide, tag, Events, Selectors, Store, StoreSections, Tag } from '@storefront/core';
 
 @configurable
-@alias('paging')
+@provide('paging')
 @tag('gb-paging', require('./index.html'))
 class Paging {
-
-  searchActions: Paging.Actions = {
-    firstPage: () => this.actions.updateCurrentPage(this.state.first),
-    lastPage: () => this.actions.updateCurrentPage(this.state.last),
-    prevPage: () => this.actions.updateCurrentPage(this.state.previous),
-    nextPage: () => this.actions.updateCurrentPage(this.state.next),
-    switchPage: (page: number) => () => this.actions.updateCurrentPage(page)
-  };
-
-  pastPurchaseActions: Paging.Actions = {
-    firstPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.first),
-    lastPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.last),
-    prevPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.previous),
-    nextPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.next),
-    switchPage: (page: number) => () => this.actions.updatePastPurchaseCurrentPage(page)
-  };
-
   props: Paging.Props = {
     showIcons: true,
     showLabels: true,
     numericLabels: false,
     labels: { first: 'First', next: 'Next', prev: 'Prev', last: 'Last' },
     limit: 5,
-    icons: {}
+    icons: {},
   };
   state: Paging.State = {
     range: [],
@@ -36,6 +19,22 @@ class Paging {
     prevPage: () => null,
     nextPage: () => null,
     switchPage: () => () => null,
+  };
+
+  searchActions: Paging.Actions = {
+    firstPage: () => this.actions.updateCurrentPage(this.state.first),
+    lastPage: () => this.actions.updateCurrentPage(this.state.last),
+    prevPage: () => this.actions.updateCurrentPage(this.state.previous),
+    nextPage: () => this.actions.updateCurrentPage(this.state.next),
+    switchPage: (page: number) => () => this.actions.updateCurrentPage(page),
+  };
+
+  pastPurchaseActions: Paging.Actions = {
+    firstPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.first),
+    lastPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.last),
+    prevPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.previous),
+    nextPage: () => this.actions.updatePastPurchaseCurrentPage(this.state.next),
+    switchPage: (page: number) => () => this.actions.updatePastPurchaseCurrentPage(page),
   };
 
   init() {
@@ -64,7 +63,7 @@ class Paging {
       highOverflow: range[range.length - 1] !== page.last,
       lowOverflow: range[0] !== 1,
     });
-  }
+  };
 
   static generateRange(lastPage: number, current: number, limit: number) {
     const last = Math.min(lastPage, limit);
@@ -87,7 +86,7 @@ class Paging {
   }
 }
 
-interface Paging extends Tag<Paging.Props, Paging.State> { }
+interface Paging extends Tag<Paging.Props, Paging.State> {}
 namespace Paging {
   export interface Props extends Tag.Props {
     showIcons?: boolean;
@@ -122,7 +121,6 @@ namespace Paging {
     backDisabled?: boolean;
     forwardDisabled?: boolean;
     range: number[];
-
   }
 }
 

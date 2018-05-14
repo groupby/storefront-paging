@@ -1,6 +1,6 @@
-import './pager';
-import './pages';
+import Pager from './pager';
+import Pages from './pages';
 import Paging from './paging';
-import './terminal-pager';
+import TerminalPager from './terminal-pager';
 
-export { Paging };
+export { Pager, Pages, Paging, TerminalPager };
