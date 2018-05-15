@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Metadata | @storefront/paging</title>
+	<title>Mixin | @storefront/paging</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,16 +56,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../classes/paging.html">Paging</a>
+					<a href="../classes/pages.html">Pages</a>
 				</li>
 				<li>
-					<a href="../modules/paging.tag.html">Tag</a>
+					<a href="../modules/pages.tag.html">Tag</a>
 				</li>
 				<li>
-					<a href="paging.tag.metadata.html">Metadata</a>
+					<a href="pages.tag.mixin.html">Mixin</a>
 				</li>
 			</ul>
-			<h1>Interface Metadata</h1>
+			<h1>Interface Mixin</h1>
 		</div>
 	</div>
 </header>
@@ -76,7 +76,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Metadata</span>
+						<span class="target">Mixin</span>
 					</li>
 				</ul>
 			</section>
@@ -87,12 +87,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#configurable" class="tsd-kind-icon">configurable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#consumes" class="tsd-kind-icon">consumes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#defaults" class="tsd-kind-icon">defaults</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#origin" class="tsd-kind-icon">origin</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paging.tag.metadata.html#provides" class="tsd-kind-icon">provides</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.mixin.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.mixin.html#flux" class="tsd-kind-icon">flux</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.mixin.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.mixin.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.mixin.html#services" class="tsd-kind-icon">services</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,62 +100,73 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="configurable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> configurable</h3>
-					<div class="tsd-signature tsd-kind-icon">configurable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="config" class="tsd-anchor"></a>
+					<h3>config</h3>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Configuration</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:65</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:92</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="consumes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> consumes</h3>
-					<div class="tsd-signature tsd-kind-icon">consumes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="flux" class="tsd-anchor"></a>
+					<h3>flux</h3>
+					<div class="tsd-signature tsd-kind-icon">flux<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FluxCapacitor</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:63</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:93</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="defaults" class="tsd-anchor"></a>
-					<h3>defaults</h3>
-					<div class="tsd-signature tsd-kind-icon">defaults<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="init" class="tsd-anchor"></a>
+					<h3>init</h3>
+					<div class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:61</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:96</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TagInterface</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>this: <span class="tsd-signature-type">TagInterface</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:95</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="services" class="tsd-anchor"></a>
+					<h3>services</h3>
+					<div class="tsd-signature tsd-kind-icon">services<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SystemServices</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:60</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="origin" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> origin</h3>
-					<div class="tsd-signature tsd-kind-icon">origin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:64</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="provides" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> provides</h3>
-					<div class="tsd-signature tsd-kind-icon">provides<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:62</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:94</li>
 						</ul>
 					</aside>
 				</section>
@@ -171,10 +181,10 @@
 					<li class=" tsd-kind-module tsd-parent-kind-class">
 						<a href="../modules/pager.tag.html">Pager.<wbr>Tag</a>
 					</li>
-					<li class=" tsd-kind-module tsd-parent-kind-class">
+					<li class="current tsd-kind-module tsd-parent-kind-class">
 						<a href="../modules/pages.tag.html">Pages.<wbr>Tag</a>
 					</li>
-					<li class="current tsd-kind-module tsd-parent-kind-class">
+					<li class=" tsd-kind-module tsd-parent-kind-class">
 						<a href="../modules/paging.tag.html">Paging.<wbr>Tag</a>
 					</li>
 					<li class=" tsd-kind-module tsd-parent-kind-class">
@@ -185,73 +195,70 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="paging.tag.description.html" class="tsd-kind-icon">Description</a>
+						<a href="pages.tag.description.html" class="tsd-kind-icon">Description</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="paging.tag.event.html" class="tsd-kind-icon">Event</a>
+						<a href="pages.tag.event.html" class="tsd-kind-icon">Event</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="paging.tag.lifecycle.html" class="tsd-kind-icon">Lifecycle</a>
+						<a href="pages.tag.lifecycle.html" class="tsd-kind-icon">Lifecycle</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.metadata.html" class="tsd-kind-icon">Metadata</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="paging.tag.metadata.html" class="tsd-kind-icon">Metadata</a>
+						<a href="pages.tag.mixin.html" class="tsd-kind-icon">Mixin</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#configurable" class="tsd-kind-icon">configurable</a>
+								<a href="pages.tag.mixin.html#config" class="tsd-kind-icon">config</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#consumes" class="tsd-kind-icon">consumes</a>
+								<a href="pages.tag.mixin.html#flux" class="tsd-kind-icon">flux</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#defaults" class="tsd-kind-icon">defaults</a>
+								<a href="pages.tag.mixin.html#init" class="tsd-kind-icon">init</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#name" class="tsd-kind-icon">name</a>
+								<a href="pages.tag.mixin.html#log" class="tsd-kind-icon">log</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#origin" class="tsd-kind-icon">origin</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paging.tag.metadata.html#provides" class="tsd-kind-icon">provides</a>
+								<a href="pages.tag.mixin.html#services" class="tsd-kind-icon">services</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="paging.tag.mixin.html" class="tsd-kind-icon">Mixin</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="paging.tag.props.html" class="tsd-kind-icon">Props</a>
+						<a href="pages.tag.props.html" class="tsd-kind-icon">Props</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#transform" class="tsd-kind-icon">Transform</a>
+						<a href="../modules/pages.tag.html#transform" class="tsd-kind-icon">Transform</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#create" class="tsd-kind-icon">create</a>
+						<a href="../modules/pages.tag.html#create" class="tsd-kind-icon">create</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#findaliases" class="tsd-kind-icon">find<wbr>Aliases</a>
+						<a href="../modules/pages.tag.html#findaliases" class="tsd-kind-icon">find<wbr>Aliases</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#findconsumes" class="tsd-kind-icon">find<wbr>Consumes</a>
+						<a href="../modules/pages.tag.html#findconsumes" class="tsd-kind-icon">find<wbr>Consumes</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#getdescription" class="tsd-kind-icon">get<wbr>Description</a>
+						<a href="../modules/pages.tag.html#getdescription" class="tsd-kind-icon">get<wbr>Description</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#getmeta" class="tsd-kind-icon">get<wbr>Meta</a>
+						<a href="../modules/pages.tag.html#getmeta" class="tsd-kind-icon">get<wbr>Meta</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#getname" class="tsd-kind-icon">get<wbr>Name</a>
+						<a href="../modules/pages.tag.html#getname" class="tsd-kind-icon">get<wbr>Name</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#mixin-1" class="tsd-kind-icon">mixin</a>
+						<a href="../modules/pages.tag.html#mixin-1" class="tsd-kind-icon">mixin</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/paging.tag.html#setdescription" class="tsd-kind-icon">set<wbr>Description</a>
+						<a href="../modules/pages.tag.html#setdescription" class="tsd-kind-icon">set<wbr>Description</a>
 					</li>
 				</ul>
 			</nav>

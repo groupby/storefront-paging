@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@storefront/paging</title>
+	<title>Props | @storefront/paging</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">@storefront/paging</a>
+					<a href="../index.html" class="title">@storefront/paging</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -53,103 +53,163 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../classes/pages.html">Pages</a>
+				</li>
+				<li>
+					<a href="../modules/pages.tag.html">Tag</a>
+				</li>
+				<li>
+					<a href="pages.tag.props.html">Props</a>
 				</li>
 			</ul>
-			<h1> @storefront/paging</h1>
+			<h1>Interface Props</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="storefront-paging">StoreFront paging</h1>
-				<p>StoreFront <code>&lt;gb-paging&gt;</code> component</p>
-				<p><a href="https://www.npmjs.com/package/@storefront/paging"><img src="https://img.shields.io/npm/v/@storefront/paging.svg?style=flat-square" alt="npm (scoped with tag)"></a>
-					<a href="https://circleci.com/gh/groupby/storefront-paging/tree/master"><img src="https://img.shields.io/circleci/project/github/groupby/storefront-paging/master.svg?style=flat-square" alt="CircleCI branch"></a>
-					<a href="https://codecov.io/gh/groupby/storefront-paging"><img src="https://img.shields.io/codecov/c/github/groupby/storefront-paging/master.svg?style=flat-square" alt="Codecov branch"></a>
-					<a href="https://www.bithound.io/github/groupby/storefront-paging"><img src="https://img.shields.io/bithound/code/github/groupby/storefront-paging.svg?style=flat-square" alt="bitHound"></a>
-				<a href="https://www.bithound.io/github/groupby/storefront-paging"><img src="https://img.shields.io/bithound/dependencies/github/groupby/storefront-paging.svg?style=flat-square" alt="bitHound"></a></p>
-				<p><a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square" alt="semantic-release"></a>
-					<a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square" alt="Commitizen friendly"></a>
-				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/groupby/storefront-paging.svg" alt="Greenkeeper badge"></a></p>
-				<p><a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square" alt="license"></a>
-				<a href="https://groupby.github.io/storefront-paging/"><img src="https://img.shields.io/badge/API_reference-latest-blue.svg?style=flat-square" alt="API Reference"></a></p>
-				<h2 id="getting-started">Getting Started</h2>
-				<p>This module requires <a href="https://www.npmjs.com/package/@storefront/core"><code>@storefront/core</code></a> for the component to render
-				and receive data from GroupBy microservices.</p>
-				<h3 id="prerequisites">Prerequisites</h3>
-				<p>This module is meant to be used in a <code>node</code> environment which is bundled for use in the browser.</p>
-				<h3 id="installing">Installing</h3>
-				<p>Use <code>npm</code> or <code>yarn</code> to install in a <code>node</code> project that uses <code>webpack</code>, <code>browserify</code> or similar.</p>
-				<pre><code class="lang-sh">npm install --save @storefront/paging
-<span class="hljs-comment"># or</span>
-yarn add @storefront/paging
-</code></pre>
-				<h2 id="usage">Usage</h2>
-				<p>This module provides the <code>&lt;gb-paging&gt;</code> component for use with StoreFront.</p>
-				<h3 id="mount-tag">Mount tag</h3>
-				<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">gb-paging</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gb-paging</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-</code></pre>
-				<pre><code class="lang-js"><span class="hljs-comment">// index.js</span>
-storefront.mount(<span class="hljs-string">'gb-paging'</span>);
-</code></pre>
-				<h2 id="running-the-tests">Running the tests</h2>
-				<p>Tests can be run to generate coverage information.
-				Once run, open <code>coverage/index.html</code> in your browser to view coverage breakdown.</p>
-				<pre><code class="lang-sh">npm start coverage
-<span class="hljs-comment"># or</span>
-yarn start coverage
-</code></pre>
-				<p>Tests can be run continuously for development</p>
-				<pre><code class="lang-sh">npm run tdd
-<span class="hljs-comment"># or</span>
-yarn tdd
-</code></pre>
-				<p>Tests can also be run alone</p>
-				<pre><code class="lang-sh">npm <span class="hljs-built_in">test</span>
-<span class="hljs-comment"># or</span>
-yarn <span class="hljs-built_in">test</span>
-</code></pre>
-			</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Props</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.props.html#storesection" class="tsd-kind-icon">store<wbr>Section</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.props.html#stylish" class="tsd-kind-icon">stylish</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="pages.tag.props.html#ui" class="tsd-kind-icon">ui</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="storesection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> store<wbr>Section</h3>
+					<div class="tsd-signature tsd-kind-icon">store<wbr>Section<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:70</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stylish" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stylish</h3>
+					<div class="tsd-signature tsd-kind-icon">stylish<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:69</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ui" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ui</h3>
+					<div class="tsd-signature tsd-kind-icon">ui<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:68</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module tsd-parent-kind-class">
-						<a href="modules/pager.tag.html">Pager.<wbr>Tag</a>
+						<a href="../modules/pager.tag.html">Pager.<wbr>Tag</a>
+					</li>
+					<li class="current tsd-kind-module tsd-parent-kind-class">
+						<a href="../modules/pages.tag.html">Pages.<wbr>Tag</a>
 					</li>
 					<li class=" tsd-kind-module tsd-parent-kind-class">
-						<a href="modules/pages.tag.html">Pages.<wbr>Tag</a>
+						<a href="../modules/paging.tag.html">Paging.<wbr>Tag</a>
 					</li>
 					<li class=" tsd-kind-module tsd-parent-kind-class">
-						<a href="modules/paging.tag.html">Paging.<wbr>Tag</a>
-					</li>
-					<li class=" tsd-kind-module tsd-parent-kind-class">
-						<a href="modules/terminalpager.tag.html">Terminal<wbr>Pager.<wbr>Tag</a>
+						<a href="../modules/terminalpager.tag.html">Terminal<wbr>Pager.<wbr>Tag</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/pager.html" class="tsd-kind-icon">Pager</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.description.html" class="tsd-kind-icon">Description</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/pages.html" class="tsd-kind-icon">Pages</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.event.html" class="tsd-kind-icon">Event</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/paging.html" class="tsd-kind-icon">Paging</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="pages.tag.lifecycle.html" class="tsd-kind-icon">Lifecycle</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/terminalpager.html" class="tsd-kind-icon">Terminal<wbr>Pager</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.metadata.html" class="tsd-kind-icon">Metadata</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.mixin.html" class="tsd-kind-icon">Mixin</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="pages.tag.props.html" class="tsd-kind-icon">Props</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="pages.tag.props.html#storesection" class="tsd-kind-icon">store<wbr>Section</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="pages.tag.props.html#stylish" class="tsd-kind-icon">stylish</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="pages.tag.props.html#ui" class="tsd-kind-icon">ui</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#transform" class="tsd-kind-icon">Transform</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#create" class="tsd-kind-icon">create</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#findaliases" class="tsd-kind-icon">find<wbr>Aliases</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#findconsumes" class="tsd-kind-icon">find<wbr>Consumes</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#getdescription" class="tsd-kind-icon">get<wbr>Description</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#getmeta" class="tsd-kind-icon">get<wbr>Meta</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#getname" class="tsd-kind-icon">get<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#mixin-1" class="tsd-kind-icon">mixin</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/pages.tag.html#setdescription" class="tsd-kind-icon">set<wbr>Description</a>
 					</li>
 				</ul>
 			</nav>
@@ -219,7 +279,7 @@ yarn <span class="hljs-built_in">test</span>
 	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
