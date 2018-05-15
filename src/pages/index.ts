@@ -1,3 +1,9 @@
-import { view } from '@storefront/core';
+import { consume, tag, Tag } from '@storefront/core';
 
-view('gb-pages', require('./index.html'));
+@consume('paging')
+@tag('gb-pages', require('./index.html'))
+class Pages {}
+
+interface Pages extends Tag {}
+
+export default Pages;
