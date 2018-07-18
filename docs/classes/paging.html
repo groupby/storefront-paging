@@ -116,6 +116,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="paging.html#_provides" class="tsd-kind-icon">_provides</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="paging.html#_removeeventhandlers" class="tsd-kind-icon">_remove<wbr>Event<wbr>Handlers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="paging.html#isinitialized" class="tsd-kind-icon">is<wbr>Initialized</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#_aliases" class="tsd-kind-icon">_aliases</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#_riot_id" class="tsd-kind-icon">_riot_<wbr>id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#actions-1" class="tsd-kind-icon">actions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#config" class="tsd-kind-icon">config</a></li>
@@ -142,6 +143,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="paging.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="paging.html#subscribeonce" class="tsd-kind-icon">subscribe<wbr>Once</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="paging.html#updatepage" class="tsd-kind-icon">update<wbr>Page</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#expose" class="tsd-kind-icon">expose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="paging.html#generaterange" class="tsd-kind-icon">generate<wbr>Range</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="paging.html#init-1" class="tsd-kind-icon">init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#mixin" class="tsd-kind-icon">mixin</a></li>
@@ -158,8 +160,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="paging.html#range" class="tsd-kind-icon">range</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#shouldupdate" class="tsd-kind-icon">should<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#trigger" class="tsd-kind-icon">trigger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#unexpose" class="tsd-kind-icon">unexpose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#unmount" class="tsd-kind-icon">unmount</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="paging.html#updatealias" class="tsd-kind-icon">update<wbr>Alias</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -247,6 +251,17 @@
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="_aliases" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagOptional">Optional</span> _aliases</h3>
+					<div class="tsd-signature tsd-kind-icon">_aliases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Tag._aliases</p>
+						<ul>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:33</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="_riot_id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> _riot_<wbr>id</h3>
 					<div class="tsd-signature tsd-kind-icon">_riot_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
@@ -275,7 +290,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Mixin.config</p>
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:92</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:100</li>
 						</ul>
 					</aside>
 				</section>
@@ -286,7 +301,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Mixin.flux</p>
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:93</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:101</li>
 						</ul>
 					</aside>
 				</section>
@@ -309,7 +324,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Mixin.log</p>
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:95</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:103</li>
 						</ul>
 					</aside>
 				</section>
@@ -376,7 +391,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Mixin.services</p>
 						<ul>
-							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:94</li>
+							<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:102</li>
 						</ul>
 					</aside>
 				</section>
@@ -457,7 +472,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L40">src/paging/index.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L40">src/paging/index.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -567,7 +582,7 @@
 					<a name="set" class="tsd-anchor"></a>
 					<h3>set</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paging.state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paging.state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -580,7 +595,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paging.state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>state: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paging.state.html" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -696,13 +711,40 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L55">src/paging/index.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L55">src/paging/index.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>page: <span class="tsd-signature-type">Page</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="expose" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> expose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">expose<span class="tsd-signature-symbol">(</span>alias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Tag.expose</p>
+								<ul>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:34</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>alias: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -719,7 +761,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L68">src/paging/index.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L68">src/paging/index.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -901,7 +943,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onBeforeMount</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:79</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:87</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -924,7 +966,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onBeforeUnmount</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:88</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:96</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -942,7 +984,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onMount</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:80</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:88</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -960,7 +1002,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onUnmount</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:89</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:97</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -978,7 +1020,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onUpdate</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:84</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:92</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1007,7 +1049,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.onUpdated</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:87</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:95</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1063,7 +1105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L80">src/paging/index.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L80">src/paging/index.ts:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1090,7 +1132,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Lifecycle.shouldUpdate</p>
 								<ul>
-									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:81</li>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:89</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1146,6 +1188,30 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="unexpose" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> unexpose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">unexpose<span class="tsd-signature-symbol">(</span>alias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Tag.unexpose</p>
+								<ul>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:35</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>alias: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1213,6 +1279,33 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="updatealias" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> update<wbr>Alias</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Alias<span class="tsd-signature-symbol">(</span>alias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Tag.updateAlias</p>
+								<ul>
+									<li>Defined in node_modules/@storefront/core/dist/core/tag/index.d.ts:36</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>alias: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Object literals</h2>
@@ -1222,7 +1315,7 @@
 					<div class="tsd-signature tsd-kind-icon">past<wbr>Purchase<wbr>Actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L32">src/paging/index.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L32">src/paging/index.ts:32</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -1235,7 +1328,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L33">src/paging/index.ts:33</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L33">src/paging/index.ts:33</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_PAST_PURCHASE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1252,7 +1345,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L34">src/paging/index.ts:34</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L34">src/paging/index.ts:34</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_PAST_PURCHASE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1269,7 +1362,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L36">src/paging/index.ts:36</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L36">src/paging/index.ts:36</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_PAST_PURCHASE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1286,7 +1379,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L35">src/paging/index.ts:35</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L35">src/paging/index.ts:35</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_PAST_PURCHASE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1303,7 +1396,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L37">src/paging/index.ts:37</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L37">src/paging/index.ts:37</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1324,7 +1417,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides Tag.props</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L7">src/paging/index.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L7">src/paging/index.ts:7</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1333,7 +1426,7 @@
 						<div class="tsd-signature tsd-kind-icon">icons<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L13">src/paging/index.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L13">src/paging/index.ts:13</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-type-declaration">
@@ -1348,7 +1441,7 @@
 						<div class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;5</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L12">src/paging/index.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L12">src/paging/index.ts:12</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1358,7 +1451,7 @@
 						<div class="tsd-signature tsd-kind-icon">numeric<wbr>Labels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L10">src/paging/index.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L10">src/paging/index.ts:10</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1368,7 +1461,7 @@
 						<div class="tsd-signature tsd-kind-icon">show<wbr>Icons<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L8">src/paging/index.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L8">src/paging/index.ts:8</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1378,7 +1471,7 @@
 						<div class="tsd-signature tsd-kind-icon">show<wbr>Labels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L9">src/paging/index.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L9">src/paging/index.ts:9</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1388,7 +1481,7 @@
 						<div class="tsd-signature tsd-kind-icon">labels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1397,7 +1490,7 @@
 							<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;First&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1407,7 +1500,7 @@
 							<div class="tsd-signature tsd-kind-icon">last<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Last&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1417,7 +1510,7 @@
 							<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Next&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1427,7 +1520,7 @@
 							<div class="tsd-signature tsd-kind-icon">prev<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Prev&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L11">src/paging/index.ts:11</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1439,7 +1532,7 @@
 					<div class="tsd-signature tsd-kind-icon">search<wbr>Actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L24">src/paging/index.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L24">src/paging/index.ts:24</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -1452,7 +1545,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L25">src/paging/index.ts:25</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L25">src/paging/index.ts:25</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1469,7 +1562,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L26">src/paging/index.ts:26</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L26">src/paging/index.ts:26</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1486,7 +1579,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L28">src/paging/index.ts:28</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L28">src/paging/index.ts:28</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1503,7 +1596,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L27">src/paging/index.ts:27</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L27">src/paging/index.ts:27</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"UPDATE_CURRENT_PAGE"</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1520,7 +1613,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L29">src/paging/index.ts:29</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L29">src/paging/index.ts:29</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1541,7 +1634,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides Tag.state</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L15">src/paging/index.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L15">src/paging/index.ts:15</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1550,7 +1643,7 @@
 						<div class="tsd-signature tsd-kind-icon">range<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L16">src/paging/index.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L16">src/paging/index.ts:16</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1564,7 +1657,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L17">src/paging/index.ts:17</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L17">src/paging/index.ts:17</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -1581,7 +1674,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L18">src/paging/index.ts:18</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L18">src/paging/index.ts:18</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -1598,7 +1691,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L20">src/paging/index.ts:20</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L20">src/paging/index.ts:20</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -1615,7 +1708,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L19">src/paging/index.ts:19</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L19">src/paging/index.ts:19</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -1632,7 +1725,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/8f98d7c/src/paging/index.ts#L21">src/paging/index.ts:21</a></li>
+										<li>Defined in <a href="https://github.com/groupby/storefront-paging/blob/156850d/src/paging/index.ts#L21">src/paging/index.ts:21</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
@@ -1686,6 +1779,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="paging.html#isinitialized" class="tsd-kind-icon">is<wbr>Initialized</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="paging.html#_aliases" class="tsd-kind-icon">_aliases</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="paging.html#_riot_id" class="tsd-kind-icon">_riot_<wbr>id</a>
@@ -1750,6 +1846,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="paging.html#updatepage" class="tsd-kind-icon">update<wbr>Page</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="paging.html#expose" class="tsd-kind-icon">expose</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="paging.html#generaterange" class="tsd-kind-icon">generate<wbr>Range</a>
 							</li>
@@ -1799,10 +1898,16 @@
 								<a href="paging.html#trigger" class="tsd-kind-icon">trigger</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="paging.html#unexpose" class="tsd-kind-icon">unexpose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="paging.html#unmount" class="tsd-kind-icon">unmount</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="paging.html#update" class="tsd-kind-icon">update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="paging.html#updatealias" class="tsd-kind-icon">update<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
 								<a href="paging.html#pastpurchaseactions" class="tsd-kind-icon">past<wbr>Purchase<wbr>Actions</a>
