@@ -1,6 +1,6 @@
-<ul class="gb-pages { gb-low-overflow: $paging.lowOverflow, gb-high-overflow: $paging.highOverflow }">
-  <li each="{ page in $paging.range }">
-    <gb-link class="gb-pages__page { gb-selected: $paging.current === page }" on-click="{ $paging.switchPage(page) }" page="{ page }">
+<ul class="gb-pages { gb-low-overflow: aliases.paging.lowOverflow, gb-high-overflow: aliases.paging.highOverflow }">
+  <li each="{ page in aliases.paging.range }">
+    <gb-link class="gb-pages__page { gb-selected: aliases.paging.current === page }" on-click="{ aliases.paging.switchPage(page) }" page="{ page }">
       <yield>{ props.page }</yield>
     </gb-link>
   </li>
