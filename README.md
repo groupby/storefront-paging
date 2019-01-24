@@ -1,4 +1,10 @@
-# StoreFront paging
+# [MOVED] StoreFront paging
+
+* * *
+
+**This repository has been moved to <https://github.com/groupby/storefront>.**
+
+* * *
 
 StoreFront `<gb-paging>` component
 
